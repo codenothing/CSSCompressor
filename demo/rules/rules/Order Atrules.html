@@ -1,0 +1,37 @@
+<h4><a name='Order Atrules'>Order Atrules</a></h4>
+<div class='author'>
+	Author: <a href='https://github.com/codenothing'>Corey Hart</a>
+</div>
+
+
+<div class='description'>
+	Moves charset and import declarations to the top of the stylesheet (to help with concatenation).
+</div>
+
+
+<div class='example'>
+
+<div class='before'>
+<span>Before:</span>
+<pre><code data-language='css'>.example {
+	color: red;
+}
+
+@charset 'utf-8'
+@import 'home.css'
+</code></pre>
+</div>
+
+<div class='after'>
+<span>After:</span>
+<pre><code data-language='css'>@charset 'utf-8'
+@import 'home.css'
+
+.example {
+	color: red;
+}
+</code></pre>
+</div>
+
+
+</div>

@@ -1,0 +1,7 @@
+{
+	"ignore": [
+		"test/*.css",
+		".git/",
+		"node_modules/"
+	]
+}

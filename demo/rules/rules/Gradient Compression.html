@@ -1,0 +1,31 @@
+<h4><a name='Gradient Compression'>Gradient Compression</a></h4>
+<div class='author'>
+	Author: <a href='https://github.com/codenothing'>Corey Hart</a>
+</div>
+
+
+<div class='description'>
+	Breaks down gradient properties and runs compressions on individual parts.
+</div>
+
+
+<div class='example'>
+
+<div class='before'>
+<span>Before:</span>
+<pre><code data-language='css'>.example {
+	background: linear-gradient( top, black 0%, #dddddd 100% );
+}
+</code></pre>
+</div>
+
+<div class='after'>
+<span>After:</span>
+<pre><code data-language='css'>.example {
+	background: linear-gradient(top,#000 0%,#ddd 100%);
+}
+</code></pre>
+</div>
+
+
+</div>

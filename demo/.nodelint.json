@@ -1,0 +1,9 @@
+{
+	"ignore": [
+		"js/jquery*",
+		"js/rainbow.min.js",
+		"js/textarea.js",
+		"rules/js/jquery*",
+		"rules/js/rainbow.min.js"
+	]
+}

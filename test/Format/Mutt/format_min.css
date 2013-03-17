@@ -1,0 +1,13 @@
+@charset 'utf-8';
+@import "import4.css" tv, print;
+@import "yesterday.css";
+@import "today.css";
+body > div[title='spacing test\'s'] + a[href$=nospace] :first-child { color:#000; background-color:#fff; background-image:url(http://www.example.com/Body-BG.png?a=semi;); margin:0 auto; padding:10px .001px }
+p, a:hover, p:hover { font:small-caps 700 12px/-1pt gerogia, serif; text-align:justify; color:red; background:#ac54bd }
+pre { color:red }
+@media all {
+	color:#fff; background-image:url(http://www.example.com/Body-BG.png?a=semi;); font:small-caps 700 12px/-1pt gerogia, serif;
+	* html div { color:#000; font-size:12pt }
+	div > p.example { background-image:url(http://www.example.com/Body-BG.png?a=semi;); font:small-caps 700 12px/-1pt gerogia, serif }
+	h1, h2, h3 > a { font-size:25.3pt }
+}

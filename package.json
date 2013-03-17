@@ -1,0 +1,24 @@
+{
+	"name": "csscompressor",
+	"description": "CSS Compressor to minify CSS files",
+	"repository": "https://github.com/codenothing/csscompressor",
+	"keywords": [ "css", "compressor", "file", "min", "tool" ],
+	"author": "Corey Hart <corey@codenothing.com> (http://www.codenothing.com)",
+	"homepage": "http://cssc.codenothing.com/",
+	"version": "0.0.1",
+	"main": "./index.js",
+	"bin": "bin/cssc",
+	"engines": {
+		"node": ">=0.8"
+	},
+	"dependencies": {
+		"csstree": "0.0.1",
+		"argv": "0.0.1",
+		"async": "0.2.6"
+	},
+	"devDependencies": {
+		"nlint": "0.0.3",
+		"munit": "0.0.2",
+		"longjohn": "0.0.3"
+	}
+}

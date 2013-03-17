@@ -1,0 +1,25 @@
+/*!
+	Preserving This Comment
+*/
+body {
+	color: red;
+}
+
+/* Removing this Comment */
+/*! But Preserving This One */
+
+#red {
+	/* Removing Nested */
+	/*! Preserving nested, but moving outside */
+	font-size: 12px;
+}
+
+@media all {
+	/*! Preserving a Nested Branch Comment */
+	/* Removing a Nested Branch Comment */
+	body {
+		/*! Testing Preserve on double nested comment */
+		/* Again, removing comment */
+		font-size: 2px;
+	}
+}

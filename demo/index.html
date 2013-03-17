@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CSS Compressor</title>
+	<link rel='stylesheet' href='css/home.css' />
+	<link rel='stylesheet' href='css/rainbow-github.css' />
+	<script type='text/javascript' src='js/CSSCompressor.js'></script>
+	<script type='text/javascript' src='js/rules.js'></script>
+	<script type='text/javascript' src='js/jquery.js'></script>
+	<script type='text/javascript' src='js/rainbow.min.js'></script>
+	<script type='text/javascript' src='js/textarea.js'></script>
+	<script type='text/javascript' src='js/home.js'></script>
+</head>
+<body>
+	<header>
+		<h1>CSS Compressor</h1>
+		<a href="https://github.com/codenothing/CSSCompressor"><img style="position: absolute; top: 0; right: 0; border: 0; height: 115px;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
+	</header>
+	<div class='content-wrapper'>
+		<section class='options'>
+			<div class='options-header'>
+				<select name='modes'></select>
+				<span class='mode-view'>[View]</span>
+				<div class='format'>
+					Format:
+					<select name='format'></select>
+				</div>
+			</div>
+			<ul></ul>
+		</section>
+		<section class='results'>
+			<div class='separator'></div>
+			<button class='run'>Run</button>
+			<div class='results-section results-section-input'>
+				<h4>Input CSS: <input type='file' name='files' multiple /></h4>
+				<textarea class='input' placeholder='Input CSS Here...'></textarea>
+			</div>
+			<div class='results-section results-section-result'>
+				<h4 class='result'>Result:</h4>
+				<div class='stats-tab'>Savings: 24.6K (23%)</div>
+				<div class='stats-results'><table></table><div class='stats-time'>10ms</div></div>
+				<textarea class='output hidden' placeholder='Compression Result Here...'></textarea>
+			</div>
+			<div class='results-section results-section-logs'>
+				<ul class='logs'></ul>
+			</div>
+		</section>
+	</div>
+
+	<div class='widget-mode hide'>
+		<div class='widget-mode-content'>
+			<h2>Current Settings</h2>
+			<div class='close-button'>Close [X]</div>
+			<textarea></textarea>
+		</div>
+	</div>
+
+	<div class='widget-rules hide'>
+		<div class='widget-rules-content'>
+			<div class='close-button'>Close [X]</div>
+			<div class='widget-rules-doc'></div>
+		</div>
+	</div>
+</body>
+</html>
