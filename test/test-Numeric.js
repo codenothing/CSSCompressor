@@ -77,7 +77,7 @@ MUnit( 'Numeric.Trailing Zeroes', function( assert ) {
 		}
 
 	].forEach(function( object ) {
-		assert.deepEqual(
+		assert.equal(
 			object.name,
 			rule( object.actual, null, compressor ),
 			object.expected
@@ -135,7 +135,7 @@ MUnit( 'Numeric.Leading Zeroes', function( assert ) {
 		}
 
 	].forEach(function( object ) {
-		assert.deepEqual(
+		assert.equal(
 			object.name,
 			rule( object.actual, null, compressor ),
 			object.expected
@@ -181,7 +181,41 @@ MUnit( 'Numeric.Unit Suffix', function( assert ) {
 		}
 
 	].forEach(function( object ) {
-		assert.deepEqual(
+		assert.equal(
+			object.name,
+			rule( object.actual, null, compressor ),
+			object.expected
+		);
+	});
+});
+
+
+// Rect Shape
+MUnit( 'Numeric.Rect Shape', function( assert ) {
+	var rule = CSSCompressor._rulesHash[ 'Rect Shape' ].callback;
+
+	[
+
+		{
+			name: 'Basic',
+			actual: 'rect( 1px, 2px, 3px, 4px )',
+			expected: 'rect(1px,2px,3px,4px)'
+		},
+
+		{
+			name: 'Inner Numeric',
+			actual: 'rect( 1.0px, 20px, 1.5px, 20.0px )',
+			expected: 'rect(1px,20px,1.5px,20px)'
+		},
+
+		{
+			name: 'Case Insensitive',
+			actual: 'RECT(   1px,2px,   3px,4px   )',
+			expected: 'rect(1px,2px,3px,4px)'
+		}
+
+	].forEach(function( object ) {
+		assert.equal(
 			object.name,
 			rule( object.actual, null, compressor ),
 			object.expected
