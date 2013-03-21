@@ -90,9 +90,30 @@ cli script
 * **--output=/path/to/output.min.css**: Specifies output path of compression result. If left undefined, output is sent to stdout.
 
 
+---
 
-Custom Rules
+Contributing
 ============
+
+Adding new compression rules is fairly straightforward, to get started download the repo and run initialization.
+
+```bash
+git clone https://github.com/codenothing/CSSCompressor.git
+cd CSSCompressor/
+make init
+```
+
+This will setup all third party modules and git hooks to ensure tests pass before commit. Everything is now ready, just
+follow the checklist below before completion.
+
+1. Only add 1 compression rule per commit.
+2. Attempt to add the rule to an existing [rules file](lib/rules/) before creating a new one.
+3. Add a set of [unit tests](test/) to cover both passing and failing compressions.
+4. Add a [rule documentation file](demo/rules/rules/) with a description and example of what happens
+5. Finally run `make test && make build`. All tests must pass.
+
+
+### Adding Compression Rules
 
 CSSCompressor is built on modular based compressions. Each compression option has it's own function
 that finds the exact parts it wants to alter, and makes changes. With that, there are 4 types of

@@ -1,10 +1,13 @@
-.PHONY: all test
+all: test
 
-all: lint
-	@node build/build
+init:
+	@./build/init.sh
 
 lint:
-	@node build/lint
+	@node build/lint.js
+
+build: lint
+	@node build/build.js
 
 test: lint
 	@node build/test.js
