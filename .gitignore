@@ -1,1 +1,7 @@
 node_modules/
+
+# Build Scripts
+dist/
+demo/js/CSSCompressor.js
+demo/rules/index.html
+demo/js/rules.js

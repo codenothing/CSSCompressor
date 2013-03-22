@@ -5,7 +5,8 @@ var fs = require( 'fs' ),
 	LIB_DIR = ROOT + 'lib/',
 	DIST_DIR = ROOT + 'dist/',
 	DEMO_DIR = ROOT + 'demo/js/',
-	BUILD_STR = fs.readFileSync( __dirname + '/headers.txt', 'utf8' ) + CSSTree.exportScript();
+	BUILD_STR = fs.readFileSync( __dirname + '/headers.txt', 'utf8' ) + CSSTree.exportScript(),
+	stat;
 
 // Anonymous wrapper for Compressor
 BUILD_STR += "\n\n(function( global, undefined ) {\n";
@@ -18,6 +19,16 @@ libs.forEach(function( path ) {
 	BUILD_STR += fs.readFileSync( LIB_DIR + path, 'utf8' );
 	BUILD_STR += "\n})( this );";
 });
+
+// Make dist dir if not already there
+try {
+	if ( ! fs.statSync( DIST_DIR ).isDirectory() ) {
+		throw new Error( 'DIST NOT DIR' );
+	}
+}
+catch ( e ) {
+	fs.mkdirSync( DIST_DIR );
+}
 
 // Write out uncompressed file
 fs.writeFileSync( DIST_DIR + 'CSSCompressor.js', BUILD_STR, 'utf8' );

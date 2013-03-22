@@ -11,6 +11,9 @@
 	"engines": {
 		"node": ">=0.8"
 	},
+	"scripts": {
+		"postinstall": "node build/build.js"
+	},
 	"dependencies": {
 		"csstree": "0.0.1",
 		"argv": "0.0.1",

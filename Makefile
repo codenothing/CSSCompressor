@@ -9,7 +9,7 @@ lint:
 build: lint
 	@node build/build.js
 
-test: lint
+test: build
 	@node build/test.js
 
 test-all: lint all

@@ -103,8 +103,8 @@ cd CSSCompressor/
 make init
 ```
 
-This will setup all third party modules and git hooks to ensure tests pass before commit. Everything is now ready, just
-follow the checklist below before completion.
+This will setup all third party modules, generated files, and git hooks to ensure tests pass before commit.
+Everything is now ready, just follow the checklist below before completion.
 
 1. Only add 1 compression rule per commit.
 2. Attempt to add the rule to an existing [rules file](lib/rules/) before creating a new one.
