@@ -12,6 +12,7 @@
 		"node": ">=0.8"
 	},
 	"scripts": {
+		"test": "make test",
 		"postinstall": "node build/build.js"
 	},
 	"dependencies": {

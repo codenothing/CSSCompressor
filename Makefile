@@ -6,11 +6,11 @@ init:
 lint:
 	@node build/lint.js
 
-build: lint
+clean:
+	@./build/clean.sh
+
+build: clean lint
 	@node build/build.js
 
 test: build
 	@node build/test.js
-
-test-all: lint all
-	@node build/test.js --all
