@@ -1,3 +1,5 @@
+.PHONY: all test clean
+
 all: test
 
 init:

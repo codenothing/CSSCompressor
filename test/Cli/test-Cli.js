@@ -1,8 +1,10 @@
 var fs = require( 'fs' ),
 	compressor = new CSSCompressor( CSSCompressor.MODE_MAX ),
 	exec = require( 'child_process' ).exec,
+	CSSC_DEV = '"' + __dirname + '/../../bin/cssc-dev"',
 	DIST_FILE = fs.readFileSync( __dirname + '/../../dist/CSSCompressor.js', 'utf8' ).trim(),
 	TEST_FILE_PATH = __dirname + '/test.css',
+	TEST_FILE_PATH_ESCAPED = '"' + TEST_FILE_PATH + '"';
 	EXPECTED_FILE_PATH = __dirname + '/expected.css',
 	TMP_FILE_PATH = __dirname + '/tmp.css',
 	TEST_FILE = fs.readFileSync( TEST_FILE_PATH, 'utf8' ).trim(),
@@ -19,7 +21,7 @@ MUnit( 'Cli', { priority: MUnit.PRIORITY_LOW } );
 
 // Streaming
 MUnit( 'Cli.Pipe', 2, function( assert ) {
-	var child = exec( "cssc-dev --mode=max", function( e, stdout ) {
+	var child = exec( CSSC_DEV + " --mode=max", function( e, stdout ) {
 		if ( e ) {
 			console.error( e );
 			assert.fail( 'Child Write' );
@@ -32,7 +34,7 @@ MUnit( 'Cli.Pipe', 2, function( assert ) {
 	child.stdin.end( TEST_FILE );
 
 	// Cat
-	exec( "cat " + TEST_FILE_PATH + " | cssc-dev --mode=max", function( e, stdout ) {
+	exec( "cat " + TEST_FILE_PATH_ESCAPED + " | " + CSSC_DEV + " --mode=max", function( e, stdout ) {
 		if ( e ) {
 			console.error( e );
 			assert.fail( 'Cat' );
@@ -43,10 +45,9 @@ MUnit( 'Cli.Pipe', 2, function( assert ) {
 	});
 });
 
-
 // Testing Parameters
 MUnit( 'Cli.Options', 5, function( assert ) {
-	exec( "cssc-dev --mode=max " + TEST_FILE_PATH, function( e, stdout ) {
+	exec( CSSC_DEV + " --mode=max " + TEST_FILE_PATH_ESCAPED, function( e, stdout ) {
 		if ( e ) {
 			console.error( e );
 			assert.fail( 'Console Log' );
@@ -57,7 +58,7 @@ MUnit( 'Cli.Options', 5, function( assert ) {
 	});
 
 	// File Output
-	exec( "cssc-dev --mode=max --output=" + TMP_FILE_PATH + " " + TEST_FILE_PATH, function( e ) {
+	exec( CSSC_DEV + " --mode=max --output=\"" + TMP_FILE_PATH + "\" " + TEST_FILE_PATH_ESCAPED, function( e ) {
 		if ( e ) {
 			console.error( e );
 			assert.fail( 'Option Output' );
@@ -70,7 +71,7 @@ MUnit( 'Cli.Options', 5, function( assert ) {
 	});
 
 	// Format
-	exec( "cssc-dev --mode=none --format=none " + TEST_FILE_PATH, function( e, stdout ) {
+	exec( CSSC_DEV + " --mode=none --format=none " + TEST_FILE_PATH_ESCAPED, function( e, stdout ) {
 		if ( e ) {
 			console.error( e );
 			assert.fail( 'Option Format' );
@@ -81,7 +82,7 @@ MUnit( 'Cli.Options', 5, function( assert ) {
 	});
 
 	// Option Off
-	exec( "cssc-dev --mode=max --off='Color to Hex' " + TEST_FILE_PATH, function( e, stdout ) {
+	exec( CSSC_DEV + " --mode=max --off='Color to Hex' " + TEST_FILE_PATH_ESCAPED, function( e, stdout ) {
 		if ( e ) {
 			console.error( e );
 			assert.fail( 'Option Off' );
@@ -92,7 +93,7 @@ MUnit( 'Cli.Options', 5, function( assert ) {
 	});
 
 	// Option On
-	exec( "cssc-dev --mode=none --format=none --on='Color to Hex','Shrink Hex' " + TEST_FILE_PATH, function( e, stdout ) {
+	exec( CSSC_DEV + " --mode=none --format=none --on='Color to Hex','Shrink Hex' " + TEST_FILE_PATH_ESCAPED, function( e, stdout ) {
 		if ( e ) {
 			console.error( e );
 			assert.fail( 'Option On' );
