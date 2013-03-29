@@ -39,6 +39,7 @@ ul.content li h4 {
 }
 
 ul.content li .author {
+	display: none;
 	font-size: 12px;
 	font-style: italic;
 }
@@ -46,7 +47,16 @@ ul.content li .author {
 ul.content li .author a {
 	color: #14B5DD;
 	text-decoration: none;
-	font-style: normal;
+}
+
+ul.content li .source {
+	font-size: 12px;
+	font-style: italic;
+}
+
+ul.content li .source a {
+	color: #14B5DD;
+	text-decoration: none;
 }
 
 ul.content li .description {

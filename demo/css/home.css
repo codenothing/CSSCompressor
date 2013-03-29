@@ -508,6 +508,7 @@ section.results.show-stats .results-section-result .stats-results {
 }
 
 .widget-rules-content .author {
+	display: none;
 	font-size: 12px;
 	font-style: italic;
 }
@@ -515,7 +516,16 @@ section.results.show-stats .results-section-result .stats-results {
 .widget-rules-content .author a {
 	color: #14B5DD;
 	text-decoration: none;
-	font-style: normal;
+}
+
+.widget-rules-content .source {
+	font-size: 12px;
+	font-style: italic;
+}
+
+.widget-rules-content .source a {
+	color: #14B5DD;
+	text-decoration: none;
 }
 
 .widget-rules-content .description {
