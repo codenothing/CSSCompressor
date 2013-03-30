@@ -16,3 +16,6 @@ build: clean lint
 
 test: build
 	@node build/test.js
+
+test-all:
+	@NODE_TEST_NO_SKIP=1 make test
