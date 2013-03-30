@@ -5,7 +5,7 @@ compressor.log = CSSCompressor.noop;
 
 
 // Common Selectors Combinations
-MUnit( 'Common.Common Selectors', function( assert ) {
+munit( 'Common.Common Selectors', function( assert ) {
 	var rule = CSSCompressor._rulesHash[ 'Common Selectors' ].callback;
 
 	[
@@ -296,7 +296,7 @@ MUnit( 'Common.Common Selectors', function( assert ) {
 
 
 // Common Rules Combinations
-MUnit( 'Common.Common Rules', function( assert ) {
+munit( 'Common.Common Rules', function( assert ) {
 	var rule = CSSCompressor._rulesHash[ 'Common Rules' ].callback;
 
 	[

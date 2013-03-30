@@ -5,7 +5,7 @@ compressor.log = CSSCompressor.noop;
 
 
 // Margin/Padding Shorthand Directionals conversions
-MUnit( 'BorderRadius.Border Radius Shorthand', function( assert ) {
+munit( 'BorderRadius.Border Radius Shorthand', function( assert ) {
 	var rule = CSSCompressor._rulesHash[ 'Border Radius Shorthand' ].callback;
 
 	[
@@ -99,7 +99,7 @@ MUnit( 'BorderRadius.Border Radius Shorthand', function( assert ) {
 
 
 // Margin/Padding Directionals conversions
-MUnit( 'BorderRadius.Border Radius Combinations', function( assert ) {
+munit( 'BorderRadius.Border Radius Combinations', function( assert ) {
 	var rule = CSSCompressor._rulesHash[ 'Border Radius Combinations' ].callback;
 
 	[

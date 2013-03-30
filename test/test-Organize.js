@@ -5,7 +5,7 @@ compressor.log = CSSCompressor.noop;
 
 
 // Lowercasing property conversions
-MUnit( 'Organize.Lowercase Properties', function( assert ) {
+munit( 'Organize.Lowercase Properties', function( assert ) {
 	var rule = CSSCompressor._rulesHash[ 'Lowercase Properties' ].callback;
 
 	[
@@ -39,7 +39,7 @@ MUnit( 'Organize.Lowercase Properties', function( assert ) {
 
 
 // Sorting property conversions
-MUnit( 'Organize.Sort Properties', function( assert ) {
+munit( 'Organize.Sort Properties', function( assert ) {
 	var rule = CSSCompressor._rulesHash[ 'Sort Properties' ].callback;
 
 	[
@@ -167,7 +167,7 @@ MUnit( 'Organize.Sort Properties', function( assert ) {
 
 
 // Sorting selector conversions
-MUnit( 'Organize.Sort Multi Selectors', function( assert ) {
+munit( 'Organize.Sort Multi Selectors', function( assert ) {
 	var rule = CSSCompressor._rulesHash[ 'Sort Multi Selectors' ].callback;
 
 	[
@@ -312,7 +312,7 @@ MUnit( 'Organize.Sort Multi Selectors', function( assert ) {
 });
 
 // Order Atrules compressions
-MUnit( 'Organize.Order Atrules', function( assert ) {
+munit( 'Organize.Order Atrules', function( assert ) {
 	var rule = CSSCompressor._rulesHash[ 'Order Atrules' ].callback;
 
 	[

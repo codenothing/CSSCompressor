@@ -5,7 +5,7 @@ compressor.log = CSSCompressor.noop;
 
 
 // Border Combinations
-MUnit( 'Border.Border, Outline Style Combinations', function( assert ) {
+munit( 'Border.Border, Outline Style Combinations', function( assert ) {
 	var rule = CSSCompressor._rulesHash[ 'Border, Outline Style Combinations' ].callback;
 
 	[
@@ -177,7 +177,7 @@ MUnit( 'Border.Border, Outline Style Combinations', function( assert ) {
 
 
 // Border Combinations
-MUnit( 'Border.Border Combinations', function( assert ) {
+munit( 'Border.Border Combinations', function( assert ) {
 	var rule = CSSCompressor._rulesHash[ 'Border Combinations' ].callback;
 
 	[

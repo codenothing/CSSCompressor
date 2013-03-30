@@ -1,5 +1,5 @@
-// Globalize MUnit and Stroke objects
-global.MUnit = require( 'munit' );
+// Globalize munit and Stroke objects
+global.munit = require( 'munit' );
 global.CSSCompressor = require( '../' );
 global.CSSTree = CSSCompressor.CSSTree;
 
@@ -7,7 +7,7 @@ global.CSSTree = CSSCompressor.CSSTree;
 require( 'longjohn' );
 
 // Defaults
-MUnit.Defaults.Settings.stopOnFail = true;
+munit.defaults.settings.stopOnFail = true;
 
 // Render tests
-MUnit.render( __dirname + '/../test/' );
+munit.render( __dirname + '/../test/', { junit: __dirname + '/results/' } );

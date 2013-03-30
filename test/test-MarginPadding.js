@@ -5,7 +5,7 @@ compressor.log = CSSCompressor.noop;
 
 
 // Margin/Padding Shorthand Directionals conversions
-MUnit( 'MarginPadding.Margin, Padding Shorthand', function( assert ) {
+munit( 'MarginPadding.Margin, Padding Shorthand', function( assert ) {
 	var rule = CSSCompressor._rulesHash[ 'Margin, Padding Shorthand' ].callback;
 
 	[
@@ -81,7 +81,7 @@ MUnit( 'MarginPadding.Margin, Padding Shorthand', function( assert ) {
 
 
 // Margin/Padding Directionals conversions
-MUnit( 'MarginPadding.Margin, Padding Combinations', function( assert ) {
+munit( 'MarginPadding.Margin, Padding Combinations', function( assert ) {
 	var rule = CSSCompressor._rulesHash[ 'Margin, Padding Combinations' ].callback;
 
 	[

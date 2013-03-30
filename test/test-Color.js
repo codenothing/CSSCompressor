@@ -5,7 +5,7 @@ compressor.log = CSSCompressor.noop;
 
 
 // RGB to Hex conversions
-MUnit( 'Color.RGB to Hex', function( assert ) {
+munit( 'Color.RGB to Hex', function( assert ) {
 	var rule = CSSCompressor._rulesHash[ 'RGB to Hex' ].callback;
 
 	[
@@ -51,7 +51,7 @@ MUnit( 'Color.RGB to Hex', function( assert ) {
 
 
 // HSL to Hex conversions
-MUnit( 'Color.HSL to Hex', function( assert ) {
+munit( 'Color.HSL to Hex', function( assert ) {
 	var rule = CSSCompressor._rulesHash[ 'HSL to Hex' ].callback;
 
 	[
@@ -103,7 +103,7 @@ MUnit( 'Color.HSL to Hex', function( assert ) {
 
 
 // Color to Hex conversions
-MUnit( 'Color.Color to Hex', function( assert ) {
+munit( 'Color.Color to Hex', function( assert ) {
 	var rule = CSSCompressor._rulesHash[ 'Color to Hex' ].callback;
 
 	[
@@ -137,7 +137,7 @@ MUnit( 'Color.Color to Hex', function( assert ) {
 
 
 // Color to Hex conversions
-MUnit( 'Color.Hex to Color', function( assert ) {
+munit( 'Color.Hex to Color', function( assert ) {
 	var rule = CSSCompressor._rulesHash[ 'Hex to Color' ].callback;
 
 	[
@@ -171,7 +171,7 @@ MUnit( 'Color.Hex to Color', function( assert ) {
 
 
 // Hex to Safe Color conversions
-MUnit( 'Color.Hex to Safe Color', function( assert ) {
+munit( 'Color.Hex to Safe Color', function( assert ) {
 	var rule = CSSCompressor._rulesHash[ 'Hex to Color' ].callback;
 
 	[
@@ -205,7 +205,7 @@ MUnit( 'Color.Hex to Safe Color', function( assert ) {
 
 
 // Shrink Hex conversions
-MUnit( 'Color.Shrink Hex', function( assert ) {
+munit( 'Color.Shrink Hex', function( assert ) {
 	var rule = CSSCompressor._rulesHash[ 'Shrink Hex' ].callback;
 
 	[
@@ -239,7 +239,7 @@ MUnit( 'Color.Shrink Hex', function( assert ) {
 
 
 // Shrink Hex conversions
-MUnit( 'Color.Lowercase Hex', function( assert ) {
+munit( 'Color.Lowercase Hex', function( assert ) {
 	var rule = CSSCompressor._rulesHash[ 'Lowercase Hex' ].callback;
 
 	[

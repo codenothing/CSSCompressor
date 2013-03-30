@@ -5,7 +5,7 @@ compressor.log = CSSCompressor.noop;
 
 
 // RGB to Hex conversions
-MUnit( 'Misc.None Conversions', function( assert ) {
+munit( 'Misc.None Conversions', function( assert ) {
 	var rule = CSSCompressor._rulesHash[ 'None Conversions' ].callback;
 
 	[
@@ -63,7 +63,7 @@ MUnit( 'Misc.None Conversions', function( assert ) {
 
 
 // URL Trimming in properties
-MUnit( 'Misc.URL Trim', function( assert ) {
+munit( 'Misc.URL Trim', function( assert ) {
 	var rule = CSSCompressor._rulesHash[ 'URL Trim' ].callback;
 
 	[
@@ -115,7 +115,7 @@ MUnit( 'Misc.URL Trim', function( assert ) {
 
 
 // Gradient value trimming
-MUnit( 'Misc.Gradient Compression', function( assert ) {
+munit( 'Misc.Gradient Compression', function( assert ) {
 	var rule = CSSCompressor._rulesHash[ 'Gradient Compression' ].callback;
 
 	[
@@ -155,7 +155,7 @@ MUnit( 'Misc.Gradient Compression', function( assert ) {
 
 
 // Font Combinations
-MUnit( 'Misc.Atrule URL Trim', function( assert ) {
+munit( 'Misc.Atrule URL Trim', function( assert ) {
 	var rule = CSSCompressor._rulesHash[ 'Atrule URL Trim' ].callback;
 
 	[

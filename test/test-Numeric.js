@@ -5,7 +5,7 @@ compressor.log = CSSCompressor.noop;
 
 
 // Trailing Zeroes tests
-MUnit( 'Numeric.Trailing Zeroes', function( assert ) {
+munit( 'Numeric.Trailing Zeroes', function( assert ) {
 	var rule = CSSCompressor._rulesHash[ 'Trailing Zeroes' ].callback;
 
 	[
@@ -87,7 +87,7 @@ MUnit( 'Numeric.Trailing Zeroes', function( assert ) {
 
 
 // Leading Zeroes tests
-MUnit( 'Numeric.Leading Zeroes', function( assert ) {
+munit( 'Numeric.Leading Zeroes', function( assert ) {
 	var rule = CSSCompressor._rulesHash[ 'Leading Zeroes' ].callback;
 
 	[
@@ -145,7 +145,7 @@ MUnit( 'Numeric.Leading Zeroes', function( assert ) {
 
 
 // Unit Suffix tests
-MUnit( 'Numeric.Unit Suffix', function( assert ) {
+munit( 'Numeric.Unit Suffix', function( assert ) {
 	var rule = CSSCompressor._rulesHash[ 'Unit Suffix' ].callback;
 
 	[
@@ -191,7 +191,7 @@ MUnit( 'Numeric.Unit Suffix', function( assert ) {
 
 
 // Rect Shape
-MUnit( 'Numeric.Rect Shape', function( assert ) {
+munit( 'Numeric.Rect Shape', function( assert ) {
 	var rule = CSSCompressor._rulesHash[ 'Rect Shape' ].callback;
 
 	[

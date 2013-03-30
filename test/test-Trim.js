@@ -5,7 +5,7 @@ compressor.log = CSSCompressor.noop;
 
 
 // Empty Values tests
-MUnit( 'Trim.Empty Values', function( assert ) {
+munit( 'Trim.Empty Values', function( assert ) {
 	var rule = CSSCompressor._rulesHash[ 'Empty Values' ].callback;
 
 	[
@@ -125,7 +125,7 @@ MUnit( 'Trim.Empty Values', function( assert ) {
 
 
 // Duplicate Properties tests
-MUnit( 'Trim.Duplicate Properties', function( assert ) {
+munit( 'Trim.Duplicate Properties', function( assert ) {
 	var rule = CSSCompressor._rulesHash[ 'Duplicate Properties' ].callback;
 
 	[
@@ -245,7 +245,7 @@ MUnit( 'Trim.Duplicate Properties', function( assert ) {
 
 
 // Strip Comments tests
-MUnit( 'Trim.Strip Comments', function( assert ) {
+munit( 'Trim.Strip Comments', function( assert ) {
 	var rule = CSSCompressor._rulesHash[ 'Strip Comments' ].callback;
 
 	[
@@ -499,7 +499,7 @@ MUnit( 'Trim.Strip Comments', function( assert ) {
 });
 
 // Strip Comments tests
-MUnit( 'Trim.Strip Empty Branches', function( assert ) {
+munit( 'Trim.Strip Empty Branches', function( assert ) {
 	var rule = CSSCompressor._rulesHash[ 'Strip Empty Branches' ].callback;
 
 	[

@@ -1,8 +1,8 @@
-MUnit( 'CSSCompressor', { priority: 1.0 } );
+munit( 'CSSCompressor', { priority: 1.0 } );
 
 // Add basic existance tests to ensure api stays consistent through versions
 // THESE TESTS CANNOT CHANGE (without heavy consideration)
-MUnit( 'CSSCompressor.init', function( assert ) {
+munit( 'CSSCompressor.init', function( assert ) {
 	var compressor = new CSSCompressor();
 
 	assert.isObject( 'settings', compressor.settings );
@@ -14,7 +14,7 @@ MUnit( 'CSSCompressor.init', function( assert ) {
 
 // Same concept, make sure sub objects stay consistent through versions
 // THESE TESTS CANNOT CHANGE (without heavy consideration)
-MUnit( 'CSSCompressor.static', function( assert ) {
+munit( 'CSSCompressor.static', function( assert ) {
 	assert.isFunction( 'compress', CSSCompressor.compress );
 	assert.isFunction( 'Settings', CSSCompressor.Settings );
 

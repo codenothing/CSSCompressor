@@ -5,7 +5,7 @@ compressor.log = CSSCompressor.noop;
 
 
 // Lowercase Selectors tests
-MUnit( 'Selector.Lowercase Selectors', function( assert ) {
+munit( 'Selector.Lowercase Selectors', function( assert ) {
 	var rule = CSSCompressor._rulesHash[ 'Lowercase Selectors' ].callback;
 
 	[
@@ -45,7 +45,7 @@ MUnit( 'Selector.Lowercase Selectors', function( assert ) {
 });
 
 // Lowercase Selectors tests
-MUnit( 'Selector.Trim Selector Attribute Quotes', function( assert ) {
+munit( 'Selector.Trim Selector Attribute Quotes', function( assert ) {
 	var rule = CSSCompressor._rulesHash[ 'Trim Selector Attribute Quotes' ].callback;
 
 	[
@@ -148,7 +148,7 @@ MUnit( 'Selector.Trim Selector Attribute Quotes', function( assert ) {
 
 
 // ID Attributes tests
-MUnit( 'Selector.ID Attribute to Selector', function( assert ) {
+munit( 'Selector.ID Attribute to Selector', function( assert ) {
 	var rule = CSSCompressor._rulesHash[ 'ID Attribute to Selector' ].callback;
 
 	[
@@ -249,7 +249,7 @@ MUnit( 'Selector.ID Attribute to Selector', function( assert ) {
 
 
 // Class Attributes tests
-MUnit( 'Selector.Class Attribute to Selector', function( assert ) {
+munit( 'Selector.Class Attribute to Selector', function( assert ) {
 	var rule = CSSCompressor._rulesHash[ 'Class Attribute to Selector' ].callback;
 
 	[
@@ -370,7 +370,7 @@ MUnit( 'Selector.Class Attribute to Selector', function( assert ) {
 
 
 // Strict ID tests
-MUnit( 'Selector.Strict ID', function( assert ) {
+munit( 'Selector.Strict ID', function( assert ) {
 	var rule = CSSCompressor._rulesHash[ 'Strict ID' ].callback;
 
 	[
@@ -497,7 +497,7 @@ MUnit( 'Selector.Strict ID', function( assert ) {
 
 
 // Strict ID tests
-MUnit( 'Selector.Comma Repeats', function( assert ) {
+munit( 'Selector.Comma Repeats', function( assert ) {
 	var rule = CSSCompressor._rulesHash[ 'Comma Repeats' ].callback;
 
 	[

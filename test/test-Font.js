@@ -5,7 +5,7 @@ compressor.log = CSSCompressor.noop;
 
 
 // Font Weight Conversions
-MUnit( 'Font.Font Weight Conversion', function( assert ) {
+munit( 'Font.Font Weight Conversion', function( assert ) {
 	var rule = CSSCompressor._rulesHash[ 'Font Weight Conversion' ].callback;
 
 	[
@@ -57,7 +57,7 @@ MUnit( 'Font.Font Weight Conversion', function( assert ) {
 
 
 // Font Family Quote Conversions
-MUnit( 'Font.Font Family Quotes', function( assert ) {
+munit( 'Font.Font Family Quotes', function( assert ) {
 	var rule = CSSCompressor._rulesHash[ 'Font Family Quotes' ].callback;
 
 	[
@@ -91,7 +91,7 @@ MUnit( 'Font.Font Family Quotes', function( assert ) {
 
 
 // Font Combinations
-MUnit( 'Font.Font Combinations', function( assert ) {
+munit( 'Font.Font Combinations', function( assert ) {
 	var rule = CSSCompressor._rulesHash[ 'Font Combinations' ].callback;
 
 	[

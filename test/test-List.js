@@ -5,7 +5,7 @@ compressor.log = CSSCompressor.noop;
 
 
 // List Style Combinations
-MUnit( 'List.List Style Combinations', function( assert ) {
+munit( 'List.List Style Combinations', function( assert ) {
 	var rule = CSSCompressor._rulesHash[ 'List Style Combinations' ].callback;
 
 	[

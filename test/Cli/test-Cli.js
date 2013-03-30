@@ -16,11 +16,11 @@ var fs = require( 'fs' ),
 compressor.log = CSSCompressor.noop;
 
 // Lower CLI testing for focused test priority
-MUnit( 'Cli', { priority: MUnit.PRIORITY_LOW } );
+munit( 'Cli', { priority: munit.PRIORITY_LOW } );
 
 
 // Streaming
-MUnit( 'Cli.Pipe', 2, function( assert ) {
+munit( 'Cli.Pipe', 2, function( assert ) {
 	var child = exec( CSSC_DEV + " --mode=max", function( e, stdout ) {
 		if ( e ) {
 			console.error( e );
@@ -46,7 +46,7 @@ MUnit( 'Cli.Pipe', 2, function( assert ) {
 });
 
 // Testing Parameters
-MUnit( 'Cli.Options', 5, function( assert ) {
+munit( 'Cli.Options', 5, function( assert ) {
 	exec( CSSC_DEV + " --mode=max " + TEST_FILE_PATH_ESCAPED, function( e, stdout ) {
 		if ( e ) {
 			console.error( e );
@@ -106,7 +106,7 @@ MUnit( 'Cli.Options', 5, function( assert ) {
 
 
 // Testing Export
-MUnit( 'Cli.Export Script', 2, function( assert ) {
+munit( 'Cli.Export Script', 2, function( assert ) {
 	assert.equal( 'Sync', CSSCompressor.exportScript().trim(), DIST_FILE );
 
 	CSSCompressor.exportScript(function( e, script ) {
