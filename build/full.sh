@@ -20,5 +20,11 @@ do
 
 		# Run test suite
 		"$NVM_DIR/$i/bin/node" "$SRCROOT/build/test.js"
+
+		# Any non successful exit should be treated as full error
+		RESULT=$?
+		if [[ $RESULT != 0 ]]; then
+			exit 1
+		fi
 	fi
 done

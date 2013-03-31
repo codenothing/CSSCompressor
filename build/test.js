@@ -4,7 +4,7 @@ global.CSSCompressor = require( '../' );
 global.CSSTree = CSSCompressor.CSSTree;
 
 // Get long stacktraces of errors
-require( 'longjohn' );
+// require( 'longjohn' );
 
 // Only stop test suite when running make test
 if ( ! process.env.NODE_TEST_NO_SKIP ) {
