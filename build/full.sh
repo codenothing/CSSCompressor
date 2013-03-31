@@ -20,19 +20,5 @@ do
 
 		# Run test suite
 		"$NVM_DIR/$i/bin/node" "$SRCROOT/build/test.js"
-
-		# Prepend tests ran with node version run in
-		cd "$SRCROOT/build/results"
-		for xml in *.xml
-		do
-			if [[ ! $xml =~ ^v ]]; then
-				v=${i//\./_}
-
-				sed "s/classname=\'/classname=\'$v\./g" "$xml" > "$SRCROOT/build/results/tmp.$xml"
-				sed "s/<testsuite name=\'/<testsuite name=\'$v\./g" "$SRCROOT/build/results/tmp.$xml" > "$SRCROOT/build/results/$v.$xml"
-				rm "$xml"
-				rm "$SRCROOT/build/results/tmp.$xml"
-			fi
-		done
 	fi
 done

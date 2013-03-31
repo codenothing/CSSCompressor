@@ -12,4 +12,7 @@ if ( ! process.env.NODE_TEST_NO_SKIP ) {
 }
 
 // Render tests
-munit.render( __dirname + '/../test/', { junit: __dirname + '/results/' } );
+munit.render( __dirname + '/../test/', {
+	junit: __dirname + '/results/',
+	junitPrefix: process.version.replace( /\./g, '_' )
+});

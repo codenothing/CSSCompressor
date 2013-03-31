@@ -22,7 +22,7 @@
 	},
 	"devDependencies": {
 		"nlint": "0.0.4",
-		"munit": "0.0.3",
+		"munit": "0.0.4",
 		"longjohn": "0.0.3"
 	}
 }
