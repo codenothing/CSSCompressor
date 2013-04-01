@@ -78,6 +78,12 @@ munit( 'Color.HSLA to HSL', function( assert ) {
 			name: 'Not 100%',
 			actual: 'hsla( 214, 10%, 10%, 0.5 )',
 			expected: 'hsla( 214, 10%, 10%, 0.5 )'
+		},
+
+		{
+			name: 'Not HSLA',
+			actual: 'hsl( 214, 10%, 10%, 1 )',
+			expected: 'hsl( 214, 10%, 10%, 1 )'
 		}
 
 	].forEach(function( object ) {

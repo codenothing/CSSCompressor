@@ -109,7 +109,7 @@ Everything is now ready, just follow the checklist below before completion.
 2. Attempt to add the rule to an existing [rules file](lib/rules/) before creating a new one.
 3. Add a set of [unit tests](test/) to cover both passing and failing compressions.
 4. Add a [rule documentation file](demo/rules/rules/) with a description and example of what happens
-5. Finally run `make test && make build`. All tests must pass.
+5. Finally run `make test`. All tests must pass.
 
 
 ### Adding Compression Rules
