@@ -4,6 +4,52 @@ var compressor = new CSSCompressor( CSSCompressor.MODE_MAX );
 compressor.log = CSSCompressor.noop;
 
 
+// RGBA to RGB conversions
+munit( 'Color.RGBA to RGB', function( assert ) {
+	var rule = CSSCompressor._rulesHash[ 'RGBA to RGB' ].callback;
+
+	[
+
+		{
+			name: 'Basic',
+			actual: 'rgba(10%,10%,10%,1)',
+			expected: 'rgb(10%,10%,10%)'
+		},
+
+		{
+			name: 'Basic Spacing',
+			actual: 'rgba( 214, 112, 87, 1 )',
+			expected: 'rgb(214,112,87)'
+		},
+
+		{
+			name: 'Basic Suffix',
+			actual: 'rgba( 10%, 10%, 10%, 1.0 )',
+			expected: 'rgb(10%,10%,10%)'
+		},
+
+		{
+			name: 'Not 100%',
+			actual: 'rgba( 10%, 10%, 10%, 0.5 )',
+			expected: 'rgba( 10%, 10%, 10%, 0.5 )'
+		},
+
+		{
+			name: 'Not RGBA',
+			actual: 'rgb( 10%, 10%, 10%, 1 )',
+			expected: 'rgb( 10%, 10%, 10%, 1 )'
+		}
+
+	].forEach(function( object ) {
+		assert.deepEqual(
+			object.name,
+			rule( object.actual, null, compressor ),
+			object.expected
+		);
+	});
+});
+
+
 // HSLA to HSL conversions
 munit( 'Color.HSLA to HSL', function( assert ) {
 	var rule = CSSCompressor._rulesHash[ 'HSLA to HSL' ].callback;
