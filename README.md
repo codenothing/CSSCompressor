@@ -27,12 +27,10 @@ CSSCompressor may also be run in a browser environment.
 ### Usage
 
 ```js
-// Straight compression
-console.log( CSSCompressor.compress( css, options ) );
+var CSSCompressor = require( 'csscompressor' );
 
-// Instance based
-var compressor = new CSSCompressor( options );
-console.log( compressor.compress( css ) );
+// Compression with default options
+CSSCompressor.compress( css );
 ```
 
 
@@ -45,10 +43,10 @@ of the compress function, or updating the settings object.
 
 
 ```js
-var compressor = new CSSCompressor( options );
-compressor.compress( css ); // is really 'compressor.compress( css, CSSCompressor.MODE_DEFAULT )'
+var compressor = new CSSCompressor( CSSCompressor.MODE_DEFAULT );
+compressor.compress( css );
 
-// Or pass an object of compression options to update the default set
+// Pass an object of compression options to update the default set
 compressor.compress( css, {
 	'RGB to Hex': true,
 	'Hex to Color': false
