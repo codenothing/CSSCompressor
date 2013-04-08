@@ -61,19 +61,19 @@ munit( 'Numeric.Trailing Zeroes', function( assert ) {
 		{
 			name: 'No Trim',
 			actual: '12.059px',
-			expected: '12.059px'
+			expected: undefined
 		},
 
 		{
 			name: 'No Trim Negative',
 			actual: '-12.059px',
-			expected: '-12.059px'
+			expected: undefined
 		},
 
 		{
 			name: 'No Suffix',
 			actual: '.750',
-			expected: '.750'
+			expected: undefined
 		}
 
 	].forEach(function( object ) {
@@ -117,21 +117,27 @@ munit( 'Numeric.Leading Zeroes', function( assert ) {
 		},
 
 		{
+			name: 'No Suffix',
+			actual: '0.75',
+			expected: '.75'
+		},
+
+		{
 			name: 'No Change',
 			actual: '-10.5px',
-			expected: '-10.5px'
+			expected: undefined
 		},
 
 		{
 			name: 'No Change Percentage',
 			actual: '10.5%',
-			expected: '10.5%'
+			expected: undefined
 		},
 
 		{
-			name: 'No Suffix',
-			actual: '0.75',
-			expected: '.75'
+			name: 'No Change No Suffix',
+			actual: '1.05',
+			expected: undefined
 		}
 
 	].forEach(function( object ) {
@@ -171,13 +177,13 @@ munit( 'Numeric.Unit Suffix', function( assert ) {
 		{
 			name: 'Non Zero',
 			actual: '50px',
-			expected: '50px'
+			expected: undefined
 		},
 
 		{
 			name: 'Non Zero Decimal',
 			actual: '50.0px',
-			expected: '50.0px'
+			expected: undefined
 		}
 
 	].forEach(function( object ) {
@@ -212,6 +218,12 @@ munit( 'Numeric.Rect Shape', function( assert ) {
 			name: 'Case Insensitive',
 			actual: 'RECT(   1px,2px,   3px,4px   )',
 			expected: 'rect(1px,2px,3px,4px)'
+		},
+
+		{
+			name: 'No Match',
+			actual: 'reet( 1px, 2px, 3px, 4px )',
+			expected: undefined
 		}
 
 	].forEach(function( object ) {

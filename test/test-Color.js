@@ -31,13 +31,13 @@ munit( 'Color.RGBA to RGB', function( assert ) {
 		{
 			name: 'Not 100%',
 			actual: 'rgba( 10%, 10%, 10%, 0.5 )',
-			expected: 'rgba( 10%, 10%, 10%, 0.5 )'
+			expected: undefined
 		},
 
 		{
 			name: 'Not RGBA',
 			actual: 'rgb( 10%, 10%, 10%, 1 )',
-			expected: 'rgb( 10%, 10%, 10%, 1 )'
+			expected: undefined
 		}
 
 	].forEach(function( object ) {
@@ -77,13 +77,13 @@ munit( 'Color.HSLA to HSL', function( assert ) {
 		{
 			name: 'Not 100%',
 			actual: 'hsla( 214, 10%, 10%, 0.5 )',
-			expected: 'hsla( 214, 10%, 10%, 0.5 )'
+			expected: undefined
 		},
 
 		{
 			name: 'Not HSLA',
 			actual: 'hsl( 214, 10%, 10%, 1 )',
-			expected: 'hsl( 214, 10%, 10%, 1 )'
+			expected: undefined
 		}
 
 	].forEach(function( object ) {
@@ -169,19 +169,19 @@ munit( 'Color.HSL to Hex', function( assert ) {
 		{
 			name: 'Invalid Hue',
 			actual: 'hsl( 416, 15%, 43% )',
-			expected: 'hsl( 416, 15%, 43% )'
+			expected: undefined
 		},
 
 		{
 			name: 'Invalid Saturation',
 			actual: 'hsl( 116, 105%, 43% )',
-			expected: 'hsl( 116, 105%, 43% )'
+			expected: undefined
 		},
 
 		{
 			name: 'Invalid Lightness',
 			actual: 'hsl( 116, 10%, 435% )',
-			expected: 'hsl( 116, 10%, 435% )'
+			expected: undefined
 		}
 
 	].forEach(function( object ) {
@@ -215,7 +215,7 @@ munit( 'Color.Color to Hex', function( assert ) {
 		{
 			name: 'No Conversion',
 			actual: 'foobar',
-			expected: 'foobar'
+			expected: undefined
 		}
 
 	].forEach(function( object ) {
@@ -249,7 +249,7 @@ munit( 'Color.Hex to Color', function( assert ) {
 		{
 			name: 'No Conversion',
 			actual: 'foobar',
-			expected: 'foobar'
+			expected: undefined
 		}
 
 	].forEach(function( object ) {
@@ -283,7 +283,7 @@ munit( 'Color.Hex to Safe Color', function( assert ) {
 		{
 			name: 'No Conversion',
 			actual: 'foobar',
-			expected: 'foobar'
+			expected: undefined
 		}
 
 	].forEach(function( object ) {
@@ -317,7 +317,7 @@ munit( 'Color.Shrink Hex', function( assert ) {
 		{
 			name: 'No Conversion',
 			actual: '#772213',
-			expected: '#772213'
+			expected: undefined
 		}
 
 	].forEach(function( object ) {
@@ -363,7 +363,7 @@ munit( 'Color.Lowercase Hex', function( assert ) {
 		{
 			name: 'No Match',
 			actual: '#A72B3',
-			expected: '#A72B3'
+			expected: undefined
 		}
 
 	].forEach(function( object ) {
