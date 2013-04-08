@@ -4,7 +4,53 @@ var compressor = new CSSCompressor( CSSCompressor.MODE_MAX );
 compressor.log = CSSCompressor.noop;
 
 
-// RGB to Hex conversions
+// RGBA to RGB conversions
+munit( 'Misc.Paren Whitespace', function( assert ) {
+	var rule = CSSCompressor._rulesHash[ 'Paren Whitespace' ].callback;
+
+	[
+
+		{
+			name: 'Basic',
+			actual: 'new-rule( top, 10px, left, 15.5, archaic )',
+			expected: 'new-rule(top,10px,left,15.5,archaic)'
+		},
+
+		{
+			name: 'Basic Vender Prefix',
+			actual: '-webkit-new-rule( top, 10px, left, 15.5, archaic )',
+			expected: '-webkit-new-rule(top,10px,left,15.5,archaic)'
+		},
+
+		{
+			name: 'Quotes',
+			actual: 'new-rule( top, "10px)", left, \')15.5\', archaic )',
+			expected: 'new-rule(top,"10px)",left,\')15.5\',archaic)'
+		},
+
+		{
+			name: 'Escapes',
+			actual: 'new-rule( top, "10\\"px)", le\\)ft, 15.5, archaic )',
+			expected: 'new-rule(top,"10\\"px)",le\\)ft,15.5,archaic)'
+		},
+
+		{
+			name: 'Empty Entry',
+			actual: 'new-rule( top, 10px, left, 15.5, )',
+			expected: 'new-rule(top,10px,left,15.5,)'
+		}
+
+	].forEach(function( object ) {
+		assert.deepEqual(
+			object.name,
+			rule( object.actual, null, compressor ),
+			object.expected
+		);
+	});
+});
+
+
+// None Conversions
 munit( 'Misc.None Conversions', function( assert ) {
 	var rule = CSSCompressor._rulesHash[ 'None Conversions' ].callback;
 
