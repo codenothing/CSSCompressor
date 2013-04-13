@@ -1,11 +1,11 @@
-<h4><a name='Paren Whitespace'>Paren Whitespace</a></h4>
+<h4><a name='Function Units'>Function Units</a></h4>
 <div class='author'>
 	Author: <a href='https://github.com/codenothing'>Corey Hart</a>
 </div>
 
 
 <div class='description'>
-	General whitespace removal of paren declarations.
+	General whitespace removal and unit compression of css functions.
 </div>
 
 
@@ -14,7 +14,7 @@
 <div class='before'>
 <span>Before:</span>
 <pre><code data-language='css'>.example {
-	background: new-rule( top, 10px, left, 15.5, archaic );
+	background: new-rule( top, 10px, 0.5px, 15.5, foo );
 }
 </code></pre>
 </div>
@@ -22,7 +22,7 @@
 <div class='after'>
 <span>After:</span>
 <pre><code data-language='css'>.example {
-	background: new-rule(top,10px,left,15.5,archaic);
+	background: new-rule(top,10px,.5px,15.5,foo);
 }
 </code></pre>
 </div>
