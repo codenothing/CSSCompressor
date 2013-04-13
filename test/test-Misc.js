@@ -172,46 +172,6 @@ munit( 'Misc.URL Trim', function( assert ) {
 });
 
 
-// Gradient value trimming
-munit( 'Misc.Gradient Compression', function( assert ) {
-	var rule = CSSCompressor._rulesHash[ 'Gradient Compression' ].callback;
-
-	[
-
-		{
-			name: 'Basic String Trim',
-			actual: { property: 'background', parts: [ '-webkit-linear-gradient( 45deg, #777 2%, #555 50%, #333 100% )' ], line: 0 },
-			expected: { property: 'background', parts: [ '-webkit-linear-gradient(45deg,#777 2%,#555 50%,#333 100%)' ], line: 0 }
-		},
-
-		{
-			name: 'Color and Number Compressions',
-			actual: { property: 'background', parts: [ '-webkit-linear-gradient( 45deg, #777777 0%, #555 50.0%, #333333 100% )' ], line: 0 },
-			expected: { property: 'background', parts: [ '-webkit-linear-gradient(45deg,#777 0,#555 50%,#333 100%)' ], line: 0 }
-		},
-
-		{
-			name: 'Do Nothing RGB',
-			actual: { property: 'background', parts: [ '-webkit-linear-gradient(45deg, rgb( 0, 0, 0 ) 2%, #555 50%, #333 100%)' ], line: 0 },
-			expected: { property: 'background', parts: [ '-webkit-linear-gradient(45deg,rgb( 0, 0, 0 ) 2%,#555 50%,#333 100%)' ], line: 0 }
-		},
-
-		{
-			name: 'Do Nothing Bad Match',
-			actual: { property: 'background', parts: [ '-webkit-linear( 45deg, #777 2%, #555 50%, #333 100% )' ], line: 0 },
-			expected: { property: 'background', parts: [ '-webkit-linear( 45deg, #777 2%, #555 50%, #333 100% )' ], line: 0 }
-		}
-
-	].forEach(function( object ) {
-		object.actual.value = object.actual.parts.join( ' ' );
-		object.expected.value = object.actual.value;
-		rule( object.actual, { selector: 'p', rules: [ object.actual ] }, compressor );
-
-		assert.deepEqual( object.name, object.actual, object.expected );
-	});
-});
-
-
 // Font Combinations
 munit( 'Misc.Atrule URL Trim', function( assert ) {
 	var rule = CSSCompressor._rulesHash[ 'Atrule URL Trim' ].callback;
