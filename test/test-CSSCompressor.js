@@ -51,4 +51,5 @@ munit( 'CSSCompressor.static', function( assert ) {
 	assert.isFunction( 'Add Rule Compression', CSSCompressor.addRule );
 	assert.isFunction( 'Add Rule Block Compression', CSSCompressor.addRuleBlock );
 	assert.isFunction( 'Add Rule Sheet Compression', CSSCompressor.addRuleSheet );
+	assert.isFunction( 'Add Rule Callback', CSSCompressor.addRuleCallback );
 });
