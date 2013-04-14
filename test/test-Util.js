@@ -1,3 +1,16 @@
+munit( 'Util.compress', function( assert ) {
+	var compressor = new CSSCompressor( CSSCompressor.MODE_NONE );
+
+	compressor.settings.update({ format: CSSCompressor.FORMAT_NONE });
+	compressor.compress( "#a{color:black}" );
+	assert.equal( 'No Compression', compressor.css, "#a{color:black}" );
+
+	compressor.settings.update({ "Color to Hex": true, "Shrink Hex": true });
+	compressor.compress();
+	assert.equal( 'Compression Success', compressor.css, "#a{color:#000}" );
+});
+
+
 // Callback testing adds rules to the global cache, wait till all other tests are complete
 munit( 'Util.addRuleCallback', { priority: munit.PRIORITY_LOWEST }, function( assert ) {
 	var rule;
