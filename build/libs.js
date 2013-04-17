@@ -5,6 +5,7 @@ module.exports = [
 	'Settings.js',
 	'Rules.js',
 	'Format.js',
+	'Stats.js',
 
 	// Tables
 	'tables/color2hex.js',

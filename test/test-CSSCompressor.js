@@ -17,6 +17,7 @@ munit( 'CSSCompressor.init', function( assert ) {
 munit( 'CSSCompressor.static', function( assert ) {
 	assert.isFunction( 'compress', CSSCompressor.compress );
 	assert.isFunction( 'Settings', CSSCompressor.Settings );
+	assert.isFunction( 'Stats', CSSCompressor.Stats );
 
 	// Tables
 	assert.isObject( 'Tables', CSSCompressor.tables );
