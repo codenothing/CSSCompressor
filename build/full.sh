@@ -2,6 +2,7 @@
 cd `dirname $0`
 cd ../
 SRCROOT=${PWD}
+NEXIT_CODE=0
 
 # Clean out and rebuild before running through each enviorment
 make clean
@@ -24,7 +25,9 @@ do
 		# Any non successful exit should be treated as full error
 		RESULT=$?
 		if [[ $RESULT != 0 ]]; then
-			exit 1
+			NEXIT_CODE=1
 		fi
 	fi
 done
+
+exit $NEXIT_CODE
