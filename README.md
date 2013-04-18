@@ -193,10 +193,8 @@ CSSCompressor.addValue( 'Removing Leading Zeros on Numerics', function( value, p
 	var m = /^0+(\d+[a-z]{2})$/.exec( value );
 
 	if ( m ) {
-		value = m[ 1 ];
+		return m[ 1 ];
 	}
-
-	return value;
 });
 ```
 
@@ -221,6 +219,27 @@ CSSCompressor.addRule( 'Special Black to Hex Converter', function( rule, branch,
 	if ( rule.property == 'color' && rule.parts[ 0 ] == 'black' ) {
 		rule.parts[ 0 ] = '#000';
 		compressor.log( "Converting black to it's hex alternative", rule.position );
+	}
+});
+```
+
+
+---
+### Build Process
+
+This compressor can also be used as part of a build process to force a cache bump on resources.
+The following example shows to to look for all url's and attaches the current unix timestamp to
+the query string of the url.
+
+```js
+var now = Date.now(), rurl = /^url\(.*?\)$/;
+
+CSSCompressor.addValue( 'Resource Refresh', function( value, position, compressor ) {
+	if ( rurl.exec( value ) ) {
+		var query = value.indexOf( '?' ) > -1 ? '&d=' + now : '&d=' + now;
+
+		// "url(img/phone.png)" -> "url(img/phone.png?d=1366303414438)"
+		return value.substr( 0, value.length - 2 ) + query + ')';
 	}
 });
 ```
