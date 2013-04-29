@@ -16,7 +16,7 @@ BUILD_STR += "\n})( this );";
 // Cycle through each lib and wrap them
 libs.forEach(function( path ) {
 	BUILD_STR += "\n\n(function( global, undefined ) {\n";
-	BUILD_STR += fs.readFileSync( LIB_DIR + path, 'utf8' );
+	BUILD_STR += fs.readFileSync( path, 'utf8' );
 	BUILD_STR += "\n})( this );";
 });
 
@@ -40,7 +40,3 @@ console.log( "\n" );
 console.log( "Compressor Output: " + DIST_DIR + 'CSSCompressor.js' );
 console.log( "Compressor Demo Output: " + DEMO_DIR + 'CSSCompressor.js' );
 console.log( "\n" );
-
-
-// Trigger Demo builds
-require( './demo.js' );

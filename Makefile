@@ -11,7 +11,10 @@ lint:
 clean:
 	@./build/clean.sh
 
-build: clean lint
+rules:
+	@node build/rules.js
+
+build: clean lint rules
 	@node build/build.js
 
 test: build

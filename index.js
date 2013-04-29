@@ -11,7 +11,7 @@ module.exports = global.CSSCompressor = require( './lib/CSSCompressor.js' );
 
 // Attach each lib
 require( './build/libs.js' ).forEach(function( file ) {
-	require( './lib/' + file );
+	require( file );
 });
 
 // Only npm package contains Cli script

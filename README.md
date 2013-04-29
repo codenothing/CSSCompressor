@@ -94,7 +94,7 @@ cli script
 Contributing
 ============
 
-Adding new compression rules is fairly straightforward, to get started download the repo and run initialization.
+Adding new compression rules is fairly straightforward, to get started clone the repo and run initialization.
 
 ```bash
 git clone https://github.com/codenothing/CSSCompressor.git
@@ -102,14 +102,12 @@ cd CSSCompressor/
 make init
 ```
 
-This will setup all third party modules, generated files, and git hooks to ensure tests pass before commit.
-Everything is now ready, just follow the checklist below before completion.
+This will setup all third party modules and generated files. Once setup, just follow the checklist below before completion.
 
 1. Only add 1 compression rule per commit.
-2. Attempt to add the rule to an existing [rules file](lib/rules/) before creating a new one.
-3. Add a set of [unit tests](test/) to cover both passing and failing compressions.
-4. Add a [rule documentation file](demo/rules/rules/) with a description and example of what happens
-5. Finally run `make test`. All tests must pass.
+2. Create a test file (tests/test-[name of rule].js) with a few expected tests. [Example](test/test-Shrink%20Hex.js)
+3. Create a new rule file (lib/rules/[name of rule].js) with exactly one rule. Follow the comment notation of other rules. [Example](lib/rules/Shrink%20Hex.js)
+4. Run `make test`. All tests must pass.
 
 
 ### Adding Compression Rules
