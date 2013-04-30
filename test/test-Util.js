@@ -1,3 +1,23 @@
+munit( 'Util.objectsMatch', function( assert ) {
+	assert.isTrue( "Type Match", CSSCompressor.objectsMatch( 1, 1 ) );
+	assert.isFalse( "Type MisMatch", CSSCompressor.objectsMatch( 1, '1' ) );
+
+	assert.isTrue( "Empty Array", CSSCompressor.objectsMatch( [], [] ) );
+	assert.isTrue( "Array Type Match", CSSCompressor.objectsMatch( [ 1 ], [ 1 ] ) );
+	assert.isFalse( "Array Type MisMatch", CSSCompressor.objectsMatch( [ 1 ], [ '1' ] ) );
+	assert.isTrue( "Nested Arrays", CSSCompressor.objectsMatch( [ [ 1, 2 ], [ 2, 1 ] ], [ [ 1, 2 ], [ 2, 1 ] ] ) );
+	assert.isTrue( "Nested Array Objects", CSSCompressor.objectsMatch( [ { a: 1 } ], [ { a: 1 } ] ) );
+	assert.isFalse( "Nested Array Objects MisMatch", CSSCompressor.objectsMatch( [ { a: 1 } ], [ { a: '1' } ] ) );
+
+	assert.isTrue( "Empty Object", CSSCompressor.objectsMatch( {}, {} ) );
+	assert.isTrue( "Object Type Match", CSSCompressor.objectsMatch( { a: 1 }, { a: 1 } ) );
+	assert.isFalse( "Object Type MisMatch", CSSCompressor.objectsMatch( { a: 1 }, { a: '1' } ) );
+	assert.isTrue( "Nested Objects", CSSCompressor.objectsMatch( { a: { b: 1 } }, { a: { b: 1 } } ) );
+	assert.isTrue( "Nested Object Arrays", CSSCompressor.objectsMatch( { a: [ 1 ] }, { a: [ 1 ] } ) );
+	assert.isFalse( "Nested Object Array MisMatch", CSSCompressor.objectsMatch( { a: [ 1 ] }, { a: [ '1' ] } ) );
+});
+
+// Static compression access
 munit( 'Util.compress', function( assert ) {
 	var compressor = new CSSCompressor( CSSCompressor.MODE_NONE );
 
