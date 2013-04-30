@@ -207,7 +207,7 @@ jQuery(function( jQuery ) {
 		var element = jQuery( this ),
 			logIndex = parseInt( element.attr( 'data-logid' ) || '', 10 ),
 			index = parseInt( element.attr( 'data-index' ) || '', 10 ),
-			log = CSSCompressor._lastRun._logs[ logIndex ] || {},
+			log = CSSCompressor._lastRun.log()[ logIndex ] || {},
 			position = ( log.positions || [] )[ index ];
 
 		if ( position && ( position.range.end - position.range.start ) < ( input.val() || '' ).length ) {
@@ -316,7 +316,7 @@ jQuery(function( jQuery ) {
 
 			// Print out the logs
 			html = "<li class='title-row'><div class='lines'>Lines</div><div class='message'>Log</div></li>";
-			compressor._logs.forEach(function( log, index ) {
+			compressor.log().forEach(function( log, index ) {
 				var lines = '', key = log.key ? "<strong>[<span data-key='" + log.key + "'>" + log.key + "</span>]</strong> " : '';
 
 				if ( log.positions.length ) {

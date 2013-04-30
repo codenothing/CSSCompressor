@@ -54,3 +54,55 @@ munit( 'CSSCompressor.static', function( assert ) {
 	assert.isFunction( 'Add Rule Sheet Compression', CSSCompressor.addRuleSheet );
 	assert.isFunction( 'Add Rule Callback', CSSCompressor.addRuleCallback );
 });
+
+// Logging
+munit( 'CSSCompressor.log', function( assert ) {
+	var compressor = new CSSCompressor(), position = new CSSTree.Position( 24 ), match;
+
+	// Basic existance tests
+	assert.exists( "For testing, ensure _logs exists", compressor._logs );
+	assert.exists( "For testing, ensure _keys exists", compressor._keys );
+	assert.deepEqual( "Empty Log Start", compressor.log(), [] );
+
+	// Pure Message
+	match = {
+		key: 'Test',
+		message: 'Just a message',
+		positions: []
+	};
+	compressor._logs = [];
+	compressor._keys = [ 'Test' ];
+	compressor.log( "Just a message" );
+	assert.deepEqual( "Pure Message Passing", compressor.log(), [ match ] );
+
+	// Key & Message
+	match = {
+		key: 'Test2',
+		message: 'Just a message',
+		positions: []
+	};
+	compressor._logs = [];
+	compressor.log( "Test2", "Just a message" );
+	assert.deepEqual( "Key & Message Passing", compressor.log(), [ match ] );
+
+	// Key, Message & Position
+	match = {
+		key: 'Test3',
+		message: 'Just a message',
+		positions: [ position ]
+	};
+	compressor._logs = [];
+	compressor.log( "Test3", "Just a message", position );
+	assert.deepEqual( "Key, Message & Position Passing", compressor.log(), [ match ] );
+
+	// Message & Position
+	match = {
+		key: 'Test4',
+		message: 'Just a message',
+		positions: [ position ]
+	};
+	compressor._logs = [];
+	compressor._keys = [ 'Test4' ];
+	compressor.log( "Just a message", position );
+	assert.deepEqual( "Message & Position Passing", compressor.log(), [ match ] );
+});
