@@ -1,3 +1,4 @@
+// Deep object matching
 munit( 'Util.objectsMatch', function( assert ) {
 	assert.isTrue( "Type Match", CSSCompressor.objectsMatch( 1, 1 ) );
 	assert.isFalse( "Type MisMatch", CSSCompressor.objectsMatch( 1, '1' ) );
@@ -16,6 +17,30 @@ munit( 'Util.objectsMatch', function( assert ) {
 	assert.isTrue( "Nested Object Arrays", CSSCompressor.objectsMatch( { a: [ 1 ] }, { a: [ 1 ] } ) );
 	assert.isFalse( "Nested Object Array MisMatch", CSSCompressor.objectsMatch( { a: [ 1 ] }, { a: [ '1' ] } ) );
 });
+
+
+// Removing item from array without knowing index
+munit( 'Util.removeItem', function( assert ) {
+	var a = [], b = {}, c = [ 1 ], d = { a: 2 };
+
+	assert.deepEqual( "Pos 1", CSSCompressor.removeItem( [ a, b, c ], a ), [ b, c ] );
+	assert.deepEqual( "Pos 2", CSSCompressor.removeItem( [ a, b, c ], b ), [ a, c ] );
+	assert.deepEqual( "Pos 3", CSSCompressor.removeItem( [ a, b, c ], c ), [ a, b ] );
+	assert.deepEqual( "No Removal", CSSCompressor.removeItem( [ a, b, c ], d ), [ a, b, c ] );
+});
+
+
+// Removing list of items from array without knowing indexes
+munit( 'Util.removeItems', function( assert ) {
+	var a = [], b = {}, c = [ 1 ], d = { a: 2 };
+
+	assert.deepEqual( "Pos 1, 2", CSSCompressor.removeItems( [ a, b, c ], [ a, b ] ), [ c ] );
+	assert.deepEqual( "Pos 2, 3", CSSCompressor.removeItems( [ a, b, c ], [ a, c ] ), [ b ] );
+	assert.deepEqual( "Pos 1, 3", CSSCompressor.removeItems( [ a, b, c ], [ c, b ] ), [ a ] );
+	assert.deepEqual( "All", CSSCompressor.removeItems( [ a, b, c ], [ c, a, b ] ), [] );
+	assert.deepEqual( "None", CSSCompressor.removeItems( [ a, b, c ], [ d ] ), [ a, b, c ] );
+});
+
 
 // Static compression access
 munit( 'Util.compress', function( assert ) {
