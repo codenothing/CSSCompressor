@@ -42,6 +42,14 @@ munit( 'Util.removeItems', function( assert ) {
 });
 
 
+// keysInHash checks that array of keys exist in hash
+munit( 'Util.keysInHash', function( assert ) {
+	assert.isTrue( "Basic", CSSCompressor.keysInHash( [ 'a', 'b' ], { a: undefined, b: null } ) );
+	assert.isFalse( "Basic Failure", CSSCompressor.keysInHash( [ 'a', 'b' ], { b: undefined, c: null } ) );
+	assert.isFalse( "No Keys Passed", CSSCompressor.keysInHash( [], { b: true } ) );
+});
+
+
 // Static compression access
 munit( 'Util.compress', function( assert ) {
 	var compressor = new CSSCompressor( CSSCompressor.MODE_NONE );
