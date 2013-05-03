@@ -46,6 +46,10 @@ munit( 'CSSCompressor.static', function( assert ) {
 	assert.isString( 'Mode None', CSSCompressor.MODE_NONE );
 	assert.isString( 'Mode Default', CSSCompressor.MODE_DEFAULT );
 	assert.isString( 'Mode Max', CSSCompressor.MODE_MAX );
+	assert.exists( 'Mode Exists None', CSSCompressor.modes[ CSSCompressor.MODE_NONE ] );
+	assert.exists( 'Mode Exists Default', CSSCompressor.modes[ CSSCompressor.MODE_DEFAULT ] );
+	assert.exists( 'Mode Exists Max', CSSCompressor.modes[ CSSCompressor.MODE_MAX ] );
+	assert.equal( 'Mode Count', Object.keys( CSSCompressor.modes ).length, 3 );
 
 	// Rules
 	assert.isFunction( 'Add Value Compression', CSSCompressor.addValue );
