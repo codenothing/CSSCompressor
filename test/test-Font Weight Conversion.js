@@ -1,8 +1,9 @@
 var compressor = new CSSCompressor( CSSCompressor.MODE_MAX );
 
 munit( 'Font.Font Weight Conversion', function( assert ) {
-	var rule = CSSCompressor._rulesHash[ 'Font Weight Conversion' ].callback;
+	assert.exists( "Table", CSSCompressor.tables[ 'Font Weight Conversion' ] );
 
+	var rule = CSSCompressor._rulesHash[ 'Font Weight Conversion' ].callback;
 	[
 
 		{

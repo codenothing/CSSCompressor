@@ -1,8 +1,9 @@
 var compressor = new CSSCompressor( CSSCompressor.MODE_MAX );
 
 munit( 'Color.Color to Hex', function( assert ) {
-	var rule = CSSCompressor._rulesHash[ 'Color to Hex' ].callback;
+	assert.exists( "Table", CSSCompressor.tables[ 'Color to Hex' ] );
 
+	var rule = CSSCompressor._rulesHash[ 'Color to Hex' ].callback;
 	[
 
 		{

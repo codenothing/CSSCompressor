@@ -9,11 +9,6 @@ module.exports = [
 	"Format.js",
 	"Stats.js",
 
-	// Tables
-	"tables/color2hex.js",
-	"tables/hex2shortcolor.js",
-	"tables/hex2shortsafe.js",
-
 	// Formatters
 	"formats/Max.js",
 	"formats/Medium.js",

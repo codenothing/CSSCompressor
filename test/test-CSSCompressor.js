@@ -18,12 +18,7 @@ munit( 'CSSCompressor.static', function( assert ) {
 	assert.isFunction( 'compress', CSSCompressor.compress );
 	assert.isFunction( 'Settings', CSSCompressor.Settings );
 	assert.isFunction( 'Stats', CSSCompressor.Stats );
-
-	// Tables
 	assert.isObject( 'Tables', CSSCompressor.tables );
-	assert.isObject( 'Tables - Color to Hex', CSSCompressor.tables.color2hex );
-	assert.isObject( 'Tables - Hex to short color', CSSCompressor.tables.hex2shortcolor );
-	assert.isObject( 'Tables - Hex to short safe', CSSCompressor.tables.hex2shortsafe );
 
 	// Priority Levels
 	assert.isNumber( 'Priority Highest', CSSCompressor.PRIORITY_HIGHEST );

@@ -1,8 +1,9 @@
 var compressor = new CSSCompressor( CSSCompressor.MODE_MAX );
 
 munit( 'Color.Hex to Safe Color', function( assert ) {
-	var rule = CSSCompressor._rulesHash[ 'Hex to Color' ].callback;
+	assert.exists( "Table", CSSCompressor.tables[ 'Hex to Safe Color' ] );
 
+	var rule = CSSCompressor._rulesHash[ 'Hex to Safe Color' ].callback;
 	[
 
 		{
@@ -15,6 +16,12 @@ munit( 'Color.Hex to Safe Color', function( assert ) {
 			name: 'Basic Uppercase',
 			actual: '#c0c0c0',
 			expected: 'silver'
+		},
+
+		{
+			name: 'Unsafe Color',
+			actual: '#f0ffff',
+			expected: undefined
 		},
 
 		{
