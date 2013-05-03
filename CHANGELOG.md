@@ -14,7 +14,7 @@
 * Allowing value rule compressions to only return when they have changes
 * Added `CSSCompressor.addRuleCallback` to be notified when new rules are added
 
----
+
 ## v0.0.1
 
 Initial Release
