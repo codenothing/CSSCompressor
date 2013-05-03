@@ -5,7 +5,7 @@
 	"keywords": [ "css", "compressor", "file", "min", "tool" ],
 	"author": "Corey Hart <corey@codenothing.com> (http://www.codenothing.com)",
 	"homepage": "http://cssc.codenothing.com/",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"main": "./index.js",
 	"bin": "bin/cssc",
 	"engines": {
