@@ -1,16 +1,17 @@
 var fs = require( 'fs' ),
 	libs = require( './libs.js' ),
 	CSSTree = require( 'csstree' ),
+	version = require( '../package.json' ).version,
 	ROOT = __dirname + '/../',
 	LIB_DIR = ROOT + 'lib/',
 	DIST_DIR = ROOT + 'dist/',
 	DEMO_DIR = ROOT + 'demo/js/',
-	BUILD_STR = fs.readFileSync( __dirname + '/headers.txt', 'utf8' ) + CSSTree.exportScript(),
+	BUILD_STR = fs.readFileSync( __dirname + '/headers.txt', 'utf8' ).replace( '[VERSION]', version ) + CSSTree.exportScript(),
 	stat;
 
 // Anonymous wrapper for Compressor
 BUILD_STR += "\n\n(function( global, undefined ) {\n";
-BUILD_STR += fs.readFileSync( LIB_DIR + 'CSSCompressor.js', 'utf8' );
+BUILD_STR += fs.readFileSync( LIB_DIR + 'CSSCompressor.js', 'utf8' ).replace( '[VERSION]', version );
 BUILD_STR += "\n})( this );";
 
 // Cycle through each lib and wrap them

@@ -27,6 +27,9 @@ CSSCompressor.exportScript = function( callback ) {
 	}
 };
 
+// Transfer current version
+CSSCompressor.version = require( './package.json' ).version;
+
 // Reattach the global compressor object
 global.CSSCompressor = _CSSCompressor;
 global.CSSTree = _CSSTree;
