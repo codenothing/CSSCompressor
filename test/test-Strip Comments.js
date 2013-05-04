@@ -1,7 +1,7 @@
 var compressor = new CSSCompressor( CSSCompressor.MODE_MAX );
 
 munit( 'Trim.Strip Comments', function( assert ) {
-	var rule = CSSCompressor._rulesHash[ 'Strip Comments' ].callback;
+	var rule = CSSCompressor.rule[ 'Strip Comments' ].callback;
 
 	[
 

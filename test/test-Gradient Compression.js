@@ -1,7 +1,7 @@
 var compressor = new CSSCompressor( CSSCompressor.MODE_MAX );
 
 munit( 'Color.Gradient Compression', function( assert ) {
-	var rule = CSSCompressor._rulesHash[ 'Gradient Compression' ].callback;
+	var rule = CSSCompressor.rule[ 'Gradient Compression' ].callback;
 
 	[
 

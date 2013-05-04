@@ -1,7 +1,7 @@
 var compressor = new CSSCompressor( CSSCompressor.MODE_MAX );
 
 munit( 'Misc.None Conversions', function( assert ) {
-	var rule = CSSCompressor._rulesHash[ 'None Conversions' ].callback;
+	var rule = CSSCompressor.rule[ 'None Conversions' ].callback;
 
 	[
 

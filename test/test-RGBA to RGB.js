@@ -1,7 +1,7 @@
 var compressor = new CSSCompressor( CSSCompressor.MODE_MAX );
 
 munit( 'Color.RGBA to RGB', function( assert ) {
-	var rule = CSSCompressor._rulesHash[ 'RGBA to RGB' ].callback;
+	var rule = CSSCompressor.rule[ 'RGBA to RGB' ].callback;
 
 	[
 

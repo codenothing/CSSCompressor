@@ -7,7 +7,7 @@ function prettySettingsJSON( settings ) {
 	delete settings.format;
 
 	jQuery.each( settings, function( name, value ) {
-		var option = CSSCompressor._rulesHash[ name ];
+		var option = CSSCompressor.rule[ name ];
 		str += ",\n\n\t// " + option.description + "\n";
 		str += "\t\"" + name + "\": " + ( value ? 'true' : 'false' );
 	});
@@ -72,13 +72,22 @@ jQuery(function( jQuery ) {
 		statsTab = resultWrapper.find( '.stats-tab' ),
 		statsTable = resultWrapper.find( '.stats-results table' ),
 		statsTime = resultWrapper.find( '.stats-results .stats-time' ),
-		html = '';
+		html = '', groups = {};
 	
 	// Attach current version number to header
 	jQuery( 'h1' ).html( 'CSS Compressor ' + CSSCompressor.version );
 
+	// Group items
+	CSSCompressor.rule().forEach(function( rule ) {
+		if ( ! groups[ rule.group ] ) {
+			groups[ rule.group ] = [];
+		}
+
+		groups[ rule.group ].push( rule );
+	});
+
 	// List Items
-	CSSCompressor.each( CSSCompressor._ruleGroupings, function( group, name ) {
+	CSSCompressor.each( groups, function( group, name ) {
 		if ( group.length ) {
 			html += [ "<li class='group'>" + name + "</li>" ];
 			group.forEach(function( rule ) {
@@ -237,7 +246,7 @@ jQuery(function( jQuery ) {
 				key = li.attr( 'data-key' ),
 				checkbox = li.find( 'input[type=checkbox]' )[ 0 ];
 
-			if ( CSSCompressor._rulesHash[ key ] ) {
+			if ( CSSCompressor.rule[ key ] ) {
 				settings[ key ] = checkbox && checkbox.checked;
 			}
 		});

@@ -1,7 +1,7 @@
 var compressor = new CSSCompressor( CSSCompressor.MODE_MAX );
 
 munit( 'Numeric.Unit Suffix', function( assert ) {
-	var rule = CSSCompressor._rulesHash[ 'Unit Suffix' ].callback;
+	var rule = CSSCompressor.rule[ 'Unit Suffix' ].callback;
 
 	[
 

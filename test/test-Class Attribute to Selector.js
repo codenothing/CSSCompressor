@@ -1,7 +1,7 @@
 var compressor = new CSSCompressor( CSSCompressor.MODE_MAX );
 
 munit( 'Selector.Class Attribute to Selector', function( assert ) {
-	var rule = CSSCompressor._rulesHash[ 'Class Attribute to Selector' ].callback;
+	var rule = CSSCompressor.rule[ 'Class Attribute to Selector' ].callback;
 
 	[
 

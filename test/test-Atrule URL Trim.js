@@ -1,7 +1,7 @@
 var compressor = new CSSCompressor( CSSCompressor.MODE_MAX );
 
 munit( 'Misc.Atrule URL Trim', function( assert ) {
-	var rule = CSSCompressor._rulesHash[ 'Atrule URL Trim' ].callback;
+	var rule = CSSCompressor.rule[ 'Atrule URL Trim' ].callback;
 
 	[
 

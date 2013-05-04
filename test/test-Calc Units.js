@@ -1,7 +1,7 @@
 var compressor = new CSSCompressor( CSSCompressor.MODE_MAX );
 
 munit( 'Numeric.Calc Units', function( assert ) {
-	var rule = CSSCompressor._rulesHash[ 'Calc Units' ].callback;
+	var rule = CSSCompressor.rule[ 'Calc Units' ].callback;
 
 	[
 

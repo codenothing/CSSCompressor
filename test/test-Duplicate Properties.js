@@ -1,7 +1,7 @@
 var compressor = new CSSCompressor( CSSCompressor.MODE_MAX );
 
 munit( 'Trim.Duplicate Properties', function( assert ) {
-	var rule = CSSCompressor._rulesHash[ 'Duplicate Properties' ].callback;
+	var rule = CSSCompressor.rule[ 'Duplicate Properties' ].callback;
 
 	[
 

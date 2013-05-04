@@ -1,7 +1,7 @@
 var compressor = new CSSCompressor( CSSCompressor.MODE_MAX );
 
 munit( 'Numeric.Trailing Zeroes', function( assert ) {
-	var rule = CSSCompressor._rulesHash[ 'Trailing Zeroes' ].callback;
+	var rule = CSSCompressor.rule[ 'Trailing Zeroes' ].callback;
 
 	[
 

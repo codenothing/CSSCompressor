@@ -1,7 +1,7 @@
 var compressor = new CSSCompressor( CSSCompressor.MODE_MAX );
 
 munit( 'BorderRadius.Border Radius Shorthand', function( assert ) {
-	var rule = CSSCompressor._rulesHash[ 'Border Radius Shorthand' ].callback;
+	var rule = CSSCompressor.rule[ 'Border Radius Shorthand' ].callback;
 
 	[
 

@@ -1,7 +1,7 @@
 var compressor = new CSSCompressor( CSSCompressor.MODE_MAX );
 
 munit( 'Organize.Sort Multi Selectors', function( assert ) {
-	var rule = CSSCompressor._rulesHash[ 'Sort Multi Selectors' ].callback;
+	var rule = CSSCompressor.rule[ 'Sort Multi Selectors' ].callback;
 
 	[
 

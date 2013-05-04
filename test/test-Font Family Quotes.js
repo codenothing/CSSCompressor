@@ -1,7 +1,7 @@
 var compressor = new CSSCompressor( CSSCompressor.MODE_MAX );
 
 munit( 'Font.Font Family Quotes', function( assert ) {
-	var rule = CSSCompressor._rulesHash[ 'Font Family Quotes' ].callback;
+	var rule = CSSCompressor.rule[ 'Font Family Quotes' ].callback;
 
 	[
 

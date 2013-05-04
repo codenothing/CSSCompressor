@@ -1,7 +1,7 @@
 var compressor = new CSSCompressor( CSSCompressor.MODE_MAX );
 
 munit( 'Organize.Lowercase Properties', function( assert ) {
-	var rule = CSSCompressor._rulesHash[ 'Lowercase Properties' ].callback;
+	var rule = CSSCompressor.rule[ 'Lowercase Properties' ].callback;
 
 	[
 

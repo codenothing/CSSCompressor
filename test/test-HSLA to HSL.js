@@ -1,7 +1,7 @@
 var compressor = new CSSCompressor( CSSCompressor.MODE_MAX );
 
 munit( 'Color.HSLA to HSL', function( assert ) {
-	var rule = CSSCompressor._rulesHash[ 'HSLA to HSL' ].callback;
+	var rule = CSSCompressor.rule[ 'HSLA to HSL' ].callback;
 
 	[
 

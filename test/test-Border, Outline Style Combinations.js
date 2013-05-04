@@ -1,7 +1,7 @@
 var compressor = new CSSCompressor( CSSCompressor.MODE_MAX );
 
 munit( 'Border.Border, Outline Style Combinations', function( assert ) {
-	var rule = CSSCompressor._rulesHash[ 'Border, Outline Style Combinations' ].callback;
+	var rule = CSSCompressor.rule[ 'Border, Outline Style Combinations' ].callback;
 
 	[
 

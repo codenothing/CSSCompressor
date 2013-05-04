@@ -3,7 +3,7 @@ var compressor = new CSSCompressor( CSSCompressor.MODE_MAX );
 munit( 'Color.Hex to Safe Color', function( assert ) {
 	assert.exists( "Table", CSSCompressor.tables[ 'Hex to Safe Color' ] );
 
-	var rule = CSSCompressor._rulesHash[ 'Hex to Safe Color' ].callback;
+	var rule = CSSCompressor.rule[ 'Hex to Safe Color' ].callback;
 	[
 
 		{

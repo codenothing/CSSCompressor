@@ -1,7 +1,7 @@
 var compressor = new CSSCompressor( CSSCompressor.MODE_MAX );
 
 munit( 'Trim.Strip Empty Branches', function( assert ) {
-	var rule = CSSCompressor._rulesHash[ 'Strip Empty Branches' ].callback;
+	var rule = CSSCompressor.rule[ 'Strip Empty Branches' ].callback;
 
 	[
 

@@ -1,7 +1,7 @@
 var compressor = new CSSCompressor( CSSCompressor.MODE_MAX );
 
 munit( 'Selector.Trim Selector Attribute Quotes', function( assert ) {
-	var rule = CSSCompressor._rulesHash[ 'Trim Selector Attribute Quotes' ].callback;
+	var rule = CSSCompressor.rule[ 'Trim Selector Attribute Quotes' ].callback;
 
 	[
 

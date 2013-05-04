@@ -1,7 +1,7 @@
 var compressor = new CSSCompressor( CSSCompressor.MODE_MAX );
 
 munit( 'Numeric.Leading Zeroes', function( assert ) {
-	var rule = CSSCompressor._rulesHash[ 'Leading Zeroes' ].callback;
+	var rule = CSSCompressor.rule[ 'Leading Zeroes' ].callback;
 
 	[
 

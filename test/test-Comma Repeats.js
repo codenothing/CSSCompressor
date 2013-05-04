@@ -1,7 +1,7 @@
 var compressor = new CSSCompressor( CSSCompressor.MODE_MAX );
 
 munit( 'Selector.Comma Repeats', function( assert ) {
-	var rule = CSSCompressor._rulesHash[ 'Comma Repeats' ].callback;
+	var rule = CSSCompressor.rule[ 'Comma Repeats' ].callback;
 
 	[
 

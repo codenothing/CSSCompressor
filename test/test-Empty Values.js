@@ -1,7 +1,7 @@
 var compressor = new CSSCompressor( CSSCompressor.MODE_MAX );
 
 munit( 'Trim.Empty Values', function( assert ) {
-	var rule = CSSCompressor._rulesHash[ 'Empty Values' ].callback;
+	var rule = CSSCompressor.rule[ 'Empty Values' ].callback;
 
 	[
 

@@ -1,7 +1,7 @@
 var compressor = new CSSCompressor( CSSCompressor.MODE_MAX );
 
 munit( 'Common.Common Selectors', function( assert ) {
-	var rule = CSSCompressor._rulesHash[ 'Common Selectors' ].callback;
+	var rule = CSSCompressor.rule[ 'Common Selectors' ].callback;
 
 	[
 

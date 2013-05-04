@@ -3,7 +3,7 @@ var compressor = new CSSCompressor( CSSCompressor.MODE_MAX );
 munit( 'Color.Hex to Color', function( assert ) {
 	assert.exists( "Table", CSSCompressor.tables[ 'Hex to Color' ] );
 
-	var rule = CSSCompressor._rulesHash[ 'Hex to Color' ].callback;
+	var rule = CSSCompressor.rule[ 'Hex to Color' ].callback;
 	[
 
 		{

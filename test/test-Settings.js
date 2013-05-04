@@ -5,7 +5,7 @@ munit( 'Settings', function( assert ) {
 	assert.equal( 'Base Non Format', settings.format, CSSCompressor.FORMAT_NONE );
 
 	// Init false
-	CSSCompressor.each( CSSCompressor._rulesHash, function( fn, name ) {
+	CSSCompressor.each( CSSCompressor.rule, function( fn, name ) {
 		if ( settings[ name ] ) {
 			return ( test = false );
 		}
@@ -19,7 +19,7 @@ munit( 'Settings', function( assert ) {
 
 		test = true;
 		settings.update( mode );
-		CSSCompressor.each( CSSCompressor._rulesHash, function( fn, name ) {
+		CSSCompressor.each( CSSCompressor.rule, function( fn, name ) {
 			if ( settings[ name ] !== match[ name ] ) {
 				assert.log( key, "'" + name + "' Doesn't Match", settings[ name ], match[ name ] );
 				return ( test = false );

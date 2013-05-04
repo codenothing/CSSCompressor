@@ -1,7 +1,7 @@
 var compressor = new CSSCompressor( CSSCompressor.MODE_MAX );
 
 munit( 'Font.Font Combinations', function( assert ) {
-	var rule = CSSCompressor._rulesHash[ 'Font Combinations' ].callback;
+	var rule = CSSCompressor.rule[ 'Font Combinations' ].callback;
 
 	[
 

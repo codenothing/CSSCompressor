@@ -1,7 +1,7 @@
 var compressor = new CSSCompressor( CSSCompressor.MODE_MAX );
 
 munit( 'MarginPadding.Margin, Padding Shorthand', function( assert ) {
-	var rule = CSSCompressor._rulesHash[ 'Margin, Padding Shorthand' ].callback;
+	var rule = CSSCompressor.rule[ 'Margin, Padding Shorthand' ].callback;
 
 	[
 

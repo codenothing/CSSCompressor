@@ -1,7 +1,7 @@
 var compressor = new CSSCompressor( CSSCompressor.MODE_MAX );
 
 munit( 'Color.Lowercase Hex', function( assert ) {
-	var rule = CSSCompressor._rulesHash[ 'Lowercase Hex' ].callback;
+	var rule = CSSCompressor.rule[ 'Lowercase Hex' ].callback;
 
 	[
 

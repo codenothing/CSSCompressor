@@ -45,13 +45,6 @@ munit( 'CSSCompressor.static', function( assert ) {
 	assert.exists( 'Mode Exists Default', CSSCompressor.modes[ CSSCompressor.MODE_DEFAULT ] );
 	assert.exists( 'Mode Exists Max', CSSCompressor.modes[ CSSCompressor.MODE_MAX ] );
 	assert.equal( 'Mode Count', Object.keys( CSSCompressor.modes ).length, 3 );
-
-	// Rules
-	assert.isFunction( 'Add Value Compression', CSSCompressor.addValue );
-	assert.isFunction( 'Add Rule Compression', CSSCompressor.addRule );
-	assert.isFunction( 'Add Rule Block Compression', CSSCompressor.addRuleBlock );
-	assert.isFunction( 'Add Rule Sheet Compression', CSSCompressor.addRuleSheet );
-	assert.isFunction( 'Add Rule Callback', CSSCompressor.addRuleCallback );
 });
 
 // Logging

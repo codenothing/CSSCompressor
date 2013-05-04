@@ -1,7 +1,7 @@
 var compressor = new CSSCompressor( CSSCompressor.MODE_MAX );
 
 munit( 'Color.RGB to Hex', function( assert ) {
-	var rule = CSSCompressor._rulesHash[ 'RGB to Hex' ].callback;
+	var rule = CSSCompressor.rule[ 'RGB to Hex' ].callback;
 
 	[
 

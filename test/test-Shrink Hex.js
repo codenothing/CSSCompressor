@@ -1,7 +1,7 @@
 var compressor = new CSSCompressor( CSSCompressor.MODE_MAX );
 
 munit( 'Color.Shrink Hex', function( assert ) {
-	var rule = CSSCompressor._rulesHash[ 'Shrink Hex' ].callback;
+	var rule = CSSCompressor.rule[ 'Shrink Hex' ].callback;
 
 	[
 
