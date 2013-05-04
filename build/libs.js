@@ -10,10 +10,7 @@ module.exports = [
 	"Stats.js",
 
 	// Formatters
-	"formats/Max.js",
-	"formats/Medium.js",
-	"formats/Minimum.js",
-	"formats/None.js",
+	"formats/",
 
 	// Trigger loading of all rule paths
 	"rules/",
