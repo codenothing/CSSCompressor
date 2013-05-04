@@ -66,6 +66,12 @@ munit( 'Numeric.Trailing Zeroes', function( assert ) {
 		},
 
 		{
+			name: 'Decimal',
+			actual: '.750px',
+			expected: '.75px'
+		},
+
+		{
 			name: 'No Suffix',
 			actual: '.750',
 			expected: undefined

@@ -16,9 +16,18 @@ BUILD_STR += "\n})( this );";
 
 // Cycle through each lib and wrap them
 libs.forEach(function( path ) {
-	BUILD_STR += "\n\n(function( global, undefined ) {\n";
-	BUILD_STR += fs.readFileSync( path, 'utf8' );
-	BUILD_STR += "\n})( this );";
+	if ( path[ path.length - 1 ] == '/' ) {
+		fs.readdirSync( path ).forEach(function( file ) {
+			BUILD_STR += "\n\n(function( global, undefined ) {\n";
+			BUILD_STR += fs.readFileSync( path + file, 'utf8' );
+			BUILD_STR += "\n})( this );";
+		});
+	}
+	else {
+		BUILD_STR += "\n\n(function( global, undefined ) {\n";
+		BUILD_STR += fs.readFileSync( path, 'utf8' );
+		BUILD_STR += "\n})( this );";
+	}
 });
 
 // Make dist dir if not already there

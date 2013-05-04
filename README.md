@@ -107,8 +107,7 @@ This will setup all third party modules and generated files. Once setup, just fo
 1. Only add 1 compression rule per commit.
 2. Create a test file (tests/test-[name of rule].js) with a few expected tests. [Example](test/test-Shrink%20Hex.js)
 3. Create a new rule file (lib/rules/[name of rule].js) with exactly one rule. Follow the comment notation of other rules. [Example](lib/rules/Shrink%20Hex.js)
-4. Add rule file to the [build libs](build/libs.js) configuration.
-5. Run `make test`. All tests must pass.
+4. Run `make test`. All tests must pass.
 
 
 ### Adding Compression Rules

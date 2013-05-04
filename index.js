@@ -10,8 +10,15 @@ global.CSSTree = require( 'csstree' );
 module.exports = global.CSSCompressor = require( './lib/CSSCompressor.js' );
 
 // Attach each lib
-require( './build/libs.js' ).forEach(function( file ) {
-	require( file );
+require( './build/libs.js' ).forEach(function( path ) {
+	if ( path[ path.length - 1 ] == '/' ) {
+		fs.readdirSync( path ).forEach(function( file ) {
+			require( path + file );
+		});
+	}
+	else {
+		require( path );
+	}
 });
 
 // Only npm package contains Cli script
