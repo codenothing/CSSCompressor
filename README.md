@@ -5,7 +5,7 @@ Plugin based CSS Compressor.
 * Full Featured [Demo](http://cssc.codenothing.com/) and [Rule Documentation](http://cssc.codenothing.com/rules/)
 * Extensive logging of each compression, including position/selection of text in the stylesheet
 * Entirely customizable, can turn individual compressions on/off with no dependencies.
-* Writing custom compressions are relatively easy.
+* Custom compression support.
   
 [![Build Status](https://travis-ci.org/codenothing/CSSCompressor.png)](https://travis-ci.org/codenothing/CSSCompressor)  
   
@@ -114,86 +114,108 @@ This will setup all third party modules and generated files. Once setup, just fo
 
 CSSCompressor is built on modular based compressions. Each compression option has it's own function
 that finds the exact parts it wants to alter, and makes changes. With that, there are 4 types of
-custom rules that may be applied: addRule, addRuleBlock, addRuleSheet, and addValue. If you haven't yet,
-please go look at the [CSSTree](https://github.com/codenothing/csstree) document before reading further
-to get an idea of what a branch looks like.
+custom rules that may be applied
+
+* [RULE_TYPE_VALUE](#rule_type_value)
+* [RULE_TYPE_RULE](#rule_type_rule)
+* [RULE_TYPE_BLOCK](#rule_type_block)
+* [RULE_TYPE_SHEET](#rule_type_sheet)
+
+If you haven't yet, please go look at the [CSSTree](https://github.com/codenothing/csstree) document
+before reading further to get an idea of what the tree looks like.
 
 
 ---
-### addRule
+### RULE_TYPE_VALUE
 
-addRule is used for individual property/value compressions. For example, converting the color value
+RULE_TYPE_VALUE is used for specific string value compressions. It works a little different in that
+there are no rules or blocks attached to the string, only a possible position. An example
+would be compressing color strings inside gradient values. This is the only compression that
+requires a return value for change.
+
+```js
+CSSCompressor.rule(
+	'Removing Leading Zeros on Numerics',
+	CSSCompressor.RULE_TYPE_VALUE,
+	function( value, position, compressor ) {
+		var m = /^0+(\d+[a-z]{2})$/.exec( value );
+
+		if ( m ) {
+			return m[ 1 ];
+		}
+	}
+);
+```
+
+
+---
+### RULE_TYPE_RULE
+
+RULE_TYPE_RULE is used for individual property/value compressions. For example, converting the color value
 'black' to it's shorter hex code alternative '#000':
 
 ```js
-CSSCompressor.addRule( 'Special Black to Hex Converter', function( rule, branch, compressor ) {
-	if ( rule.property == 'color' && rule.parts[ 0 ] == 'black' ) {
-		rule.parts[ 0 ] = '#000';
+CSSCompressor.rule(
+	'Special Black to Hex Converter',
+	CSSCompressor.RULE_TYPE_RULE,
+	function( rule, branch, compressor ) {
+		if ( rule.property == 'color' && rule.parts[ 0 ] == 'black' ) {
+			rule.parts[ 0 ] = '#000';
+		}
 	}
-});
+);
 ```
 
 
 ---
-### addRuleBlock
+### RULE_TYPE_BLOCK
 
-addRuleBlock is used for rule set compressions. A full branch is passed to the callback to be rendered for
+RULE_TYPE_BLOCK is used for rule set compressions. A full branch is passed to the callback to be rendered for
 combination style compressions. For example, removing all color properties in a div block
 
 ```js
-CSSCompressor.addRuleBlock( 'Remove All Color Properties in Divs', function( branch, compressor ) {
-	if ( ! branch.selector || ! branch.selector.exec( /div$/i ) || ! branch.rules ) {
-		return;
-	}
+CSSCompressor.rule(
+	'Remove All Color Properties in Divs',
+	CSSCompressor.RULE_TYPE_BLOCK,
+	function( branch, compressor ) {
+		if ( ! branch.selector || ! branch.selector.exec( /div$/i ) || ! branch.rules ) {
+			return;
+		}
 
-	for ( var i = 0, rule; i < branch.rules.length; i++ ) {
-		rule = branch.rules[ i ];
+		for ( var i = 0, rule; i < branch.rules.length; i++ ) {
+			rule = branch.rules[ i ];
 
-		if ( rule.property == 'color' ) {
-			branch.rules.splice( i, 1 );
-			i--;
+			if ( rule.property == 'color' ) {
+				branch.rules.splice( i, 1 );
+				i--;
+			}
 		}
 	}
-});
+);
 ```
 
 
 ---
-### addRuleSheet
+### RULE_TYPE_SHEET
 
-addRuleSheet is used for full stylesheet compressions. The callback is passed the entire stylesheet AST in
+RULE_TYPE_SHEET is used for full stylesheet compressions. The callback is passed the entire stylesheet AST in
 the branches array for inspection and compression. For example, to remove all comments:
 
 ```js
-CSSCompressor.addRuleSheet( 'Remove Comments', function( branches, compressor ) {
-	for ( var i = 0, branch; ++i < branches.length; i++ ) {
-		branch = branches[ i ];
+CSSCompressor.rule(
+	'Remove Comments',
+	CSSCompressor.RULE_TYPE_SHEET,
+	function( branches, compressor ) {
+		for ( var i = 0, branch; ++i < branches.length; i++ ) {
+			branch = branches[ i ];
 
-		if ( branch.comment ) {
-			branches.splice( i, 1 );
-			i--;
+			if ( branch.comment ) {
+				branches.splice( i, 1 );
+				i--;
+			}
 		}
 	}
-});
-```
-
-
----
-### addValue
-
-addValue is used for specific string value compressions. It works a little different in that
-there are no rules or blocks attached to the string, only a possible position. An example
-would be compressing color strings inside gradient values. This is the only compression that
-requires a return value
-
-```js
-CSSCompressor.addValue( 'Removing Leading Zeros on Numerics', function( value, position, compressor ) {
-	var m = /^0+(\d+[a-z]{2})$/.exec( value );
-
-	if ( m ) {
-		return m[ 1 ];
-	}
-});
+);
 ```
 
 
@@ -205,7 +227,7 @@ a ton of useful information about it's parent object. In CSSCompressor's [demo s
 the logging function is used to mark the original position in the stylesheet for that compression.
 
 ```js
-compressor.log( [ key, ] msg, position );
+compressor.log( [ key, ] msg [, position ] );
 ```
 
 The log method takes 3 parameters, an optional string name of the compression function used, a string message describing what
@@ -213,12 +235,16 @@ was changed, and the position object of the affected rule/branch. The last param
 objects if multiple branches/rules are affected. Taking the color example from above and adding a log line to it:
 
 ```js
-CSSCompressor.addRule( 'Special Black to Hex Converter', function( rule, branch, compressor ) {
-	if ( rule.property == 'color' && rule.parts[ 0 ] == 'black' ) {
-		rule.parts[ 0 ] = '#000';
-		compressor.log( "Converting black to it's hex alternative", rule.position );
+CSSCompressor.rule(
+	'Special Black to Hex Converter',
+	CSSCompressor.RULE_TYPE_RULE,
+	function( rule, branch, compressor ) {
+		if ( rule.property == 'color' && rule.parts[ 0 ] == 'black' ) {
+			rule.parts[ 0 ] = '#000';
+			compressor.log( "Converting black to it's hex alternative", rule.position );
+		}
 	}
-});
+);
 ```
 
 
@@ -232,14 +258,18 @@ the query string of the url.
 ```js
 var now = Date.now(), rurl = /^url\(.*?\)$/;
 
-CSSCompressor.addValue( 'Resource Refresh', function( value, position, compressor ) {
-	if ( rurl.exec( value ) ) {
-		var query = value.indexOf( '?' ) > -1 ? '&d=' + now : '&d=' + now;
+CSSCompressor.rule(
+	'Resource Refresh',
+	CSSCompressor.RULE_TYPE_VALUE,
+	function( value, position, compressor ) {
+		if ( rurl.exec( value ) ) {
+			var query = value.indexOf( '?' ) > -1 ? '&d=' + now : '&d=' + now;
 
-		// "url(img/phone.png)" -> "url(img/phone.png?d=1366303414438)"
-		return value.substr( 0, value.length - 2 ) + query + ')';
+			// "url(img/phone.png)" -> "url(img/phone.png?d=1366303414438)"
+			return value.substr( 0, value.length - 2 ) + query + ')';
+		}
 	}
-});
+);
 ```
 
 

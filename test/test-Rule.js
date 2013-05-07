@@ -6,12 +6,23 @@ var fs = require( 'fs' ),
 munit( 'Rule', { priority: munit.PRIORITY_LOWEST } );
 
 
+// Add basic existance tests to ensure api stays consistent through versions
+// THESE TESTS CANNOT CHANGE (without heavy consideration)
+munit( 'Rule.static', function( assert ) {
+	assert.isFunction( 'Add Rule Existance', CSSCompressor.rule );
+	assert.isFunction( 'addRuleCallback Existance', CSSCompressor.addRuleCallback );
+	assert.exists( 'Rule Type Value', CSSCompressor.RULE_TYPE_VALUE );
+	assert.exists( 'Rule Type Rule', CSSCompressor.RULE_TYPE_RULE );
+	assert.exists( 'Rule Type Block', CSSCompressor.RULE_TYPE_BLOCK );
+	assert.exists( 'Rule Type Sheet', CSSCompressor.RULE_TYPE_SHEET );
+});
+
+
 // Base rule additions
 munit( 'Rule.rule', function( assert ) {
 	var rule;
 
 	// Base testing
-	assert.isFunction( 'Rule Existance', CSSCompressor.rule );
 	assert.equal( 'Rule count', CSSCompressor.rule().length, fs.readdirSync( ROOT + 'lib/rules' ).length );
 
 	// Test rule type matching
@@ -19,7 +30,8 @@ munit( 'Rule.rule', function( assert ) {
 		CSSCompressor.RULE_TYPE_VALUE,
 		CSSCompressor.RULE_TYPE_RULE,
 		CSSCompressor.RULE_TYPE_BLOCK,
-		CSSCompressor.RULE_TYPE_SHEET
+		CSSCompressor.RULE_TYPE_SHEET,
+		"NO MATCH TYPE"
 	], function( type ) {
 		var actual = CSSCompressor.rule( type ),
 			expected = CSSCompressor.rule().filter(function( rule ) {
@@ -28,6 +40,29 @@ munit( 'Rule.rule', function( assert ) {
 
 		assert.deepEqual( "Rule Type Stack - " + type, actual, expected );
 	});
+
+	// Testing basic addition
+	rule = {
+		name: 'My Basic Test Rule',
+		type: CSSCompressor.RULE_TYPE_VALUE,
+		callback: CSSCompressor.noop
+	};
+	assert.doesNotThrow( 'Basic Rule Addition', function(){
+		CSSCompressor.rule( rule.name, rule.type, rule.callback );
+	});
+	assert.equal( "Basic Rule Addition - Name", CSSCompressor.rule[ rule.name ].name, rule.name );
+	assert.equal( "Basic Rule Addition - Type", CSSCompressor.rule[ rule.name ].type, rule.type );
+	assert.equal( "Basic Rule Addition - Callback", CSSCompressor.rule[ rule.name ].callback, rule.callback );
+
+	// Testing basic array of rule additions
+	assert.doesNotThrow( 'Basic Multiple Rule Addition', function(){
+		CSSCompressor.rule([
+			{ name: 'Test Multiple Addition 1', type: CSSCompressor.RULE_TYPE_VALUE, callback: CSSCompressor.noop },
+			{ name: 'Test Multiple Addition 2', type: CSSCompressor.RULE_TYPE_VALUE, callback: CSSCompressor.noop }
+		]);
+	});
+	assert.exists( 'Basic Multiple Rule Addition - 1 Exists', CSSCompressor.rule[ 'Test Multiple Addition 1' ] );
+	assert.exists( 'Basic Multiple Rule Addition - 2 Exists', CSSCompressor.rule[ 'Test Multiple Addition 2' ] );
 
 	// Rules must have callbacks
 	assert.throws( 'Callback Empty', /Rule callback not defined/, function(){
@@ -59,24 +94,26 @@ munit( 'Rule.rule', function( assert ) {
 });
 
 
-// Callback testing adds rules to the global cache, wait till all other tests are complete
-munit( 'Rule.addRuleCallback', function( assert ) {
+// Testing that new rule triggers true on all modes except none
+munit( 'Rule.addRuleCallback.default', function( assert ) {
+	CSSCompressor.rule( "New addRuleCallback Test", CSSCompressor.RULE_TYPE_VALUE, CSSCompressor.noop );
+	CSSCompressor.each( CSSCompressor.modes, function( settings, name ) {
+		if ( name !== CSSCompressor.MODE_NONE ) {
+			assert.isTrue( "True New Rule Test - " + name, settings[ 'New addRuleCallback Test' ] );
+		}
+	});
+});
+
+
+// Tests for actual callback being triggered
+munit( 'Rule.addRuleCallback.callback', 2, function( assert ) {
 	// For the purpose of this test, ensure that the callback stack exists
 	assert.exists( 'Callback Stack Exists', CSSCompressor._addRuleStack );
 
-	// Testing that new rule triggers true on all modes except none
-	CSSCompressor.rule( "New Rule Test", CSSCompressor.RULE_TYPE_VALUE, CSSCompressor.noop );
-	CSSCompressor.each( CSSCompressor.modes, function( settings, name ) {
-		if ( name !== CSSCompressor.MODE_NONE ) {
-			assert.isTrue( "True New Rule Test - " + name, settings[ 'New Rule Test' ] );
-		}
-	});
-
-
-	// New Rules
+	// Watch for new rule
 	CSSCompressor._addRuleStack = [];
 	CSSCompressor.addRuleCallback(function( options ) {
-		assert.equal( 'Add Rule Addition', options.name, "New Rule" );
+		assert.equal( 'Add Rule Addition', options.name, "New addRuleCallback Test Rule" );
 	});
-	CSSCompressor.rule( "New Rule", CSSCompressor.RULE_TYPE_VALUE, CSSCompressor.noop );
+	CSSCompressor.rule( "New addRuleCallback Test Rule", CSSCompressor.RULE_TYPE_VALUE, CSSCompressor.noop );
 });
