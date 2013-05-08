@@ -14,7 +14,7 @@ munit( 'Settings', function( assert ) {
 
 
 	// Ensure all nodes work with settings.update
-	CSSCompressor.each( CSSCompressor.modes, function( match, mode ) {
+	CSSCompressor.each( CSSCompressor.mode, function( match, mode ) {
 		var key = 'Mode - ' + mode;
 
 		test = true;

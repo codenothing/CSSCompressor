@@ -110,7 +110,7 @@ jQuery(function( jQuery ) {
 
 	// Mode selections
 	html = "<option value='custom'>Custom</option>";
-	CSSCompressor.each( CSSCompressor.modes, function( mode, name ) {
+	CSSCompressor.each( CSSCompressor.mode, function( mode, name ) {
 		var display = name[ 0 ].toUpperCase() + name.substr( 1 );
 		html += [
 			"<option value='" + name + "'>" + display + "</option>"
@@ -190,7 +190,7 @@ jQuery(function( jQuery ) {
 
 	// Mode Change
 	modes.on( 'change', function(){
-		var mode = CSSCompressor.modes[ modes.val() || '' ];
+		var mode = CSSCompressor.mode[ modes.val() || '' ];
 
 		if ( mode ) {
 			options.children( 'li:not(.group)' ).each(function( i, elem ) {

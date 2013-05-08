@@ -35,16 +35,6 @@ munit( 'CSSCompressor.static', function( assert ) {
 	assert.isString( 'Format Med', CSSCompressor.FORMAT_MED );
 	assert.isString( 'Format Min', CSSCompressor.FORMAT_MIN );
 	assert.isString( 'Format None', CSSCompressor.FORMAT_NONE );
-
-	// Modes
-	assert.isFunction( 'Mode Addition', CSSCompressor.addMode );
-	assert.isString( 'Mode None', CSSCompressor.MODE_NONE );
-	assert.isString( 'Mode Default', CSSCompressor.MODE_DEFAULT );
-	assert.isString( 'Mode Max', CSSCompressor.MODE_MAX );
-	assert.exists( 'Mode Exists None', CSSCompressor.modes[ CSSCompressor.MODE_NONE ] );
-	assert.exists( 'Mode Exists Default', CSSCompressor.modes[ CSSCompressor.MODE_DEFAULT ] );
-	assert.exists( 'Mode Exists Max', CSSCompressor.modes[ CSSCompressor.MODE_MAX ] );
-	assert.equal( 'Mode Count', Object.keys( CSSCompressor.modes ).length, 3 );
 });
 
 // Logging

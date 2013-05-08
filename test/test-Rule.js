@@ -97,7 +97,7 @@ munit( 'Rule.rule', function( assert ) {
 // Testing that new rule triggers true on all modes except none
 munit( 'Rule.addRuleCallback.default', function( assert ) {
 	CSSCompressor.rule( "New addRuleCallback Test", CSSCompressor.RULE_TYPE_VALUE, CSSCompressor.noop );
-	CSSCompressor.each( CSSCompressor.modes, function( settings, name ) {
+	CSSCompressor.each( CSSCompressor.mode, function( settings, name ) {
 		if ( name !== CSSCompressor.MODE_NONE ) {
 			assert.isTrue( "True New Rule Test - " + name, settings[ 'New addRuleCallback Test' ] );
 		}
