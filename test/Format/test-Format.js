@@ -2,7 +2,7 @@ var fs = require( 'fs' ),
 	compressor = new CSSCompressor( CSSCompressor.MODE_MAX );
 
 
-munit( 'Format', { priority: munit.PRIORITY_LOW }, function( assert ) {
+munit( 'Format.Sheets', { priority: munit.PRIORITY_LOW }, function( assert ) {
 	fs.readdirSync( __dirname + '/' ).forEach(function( dir ) {
 		if ( ! fs.statSync( __dirname + '/' + dir ).isDirectory() ) {
 			return;

@@ -28,13 +28,6 @@ munit( 'CSSCompressor.static', function( assert ) {
 	assert.isNumber( 'Priority Low', CSSCompressor.PRIORITY_LOW );
 	assert.isNumber( 'Priority Lower', CSSCompressor.PRIORITY_LOWER );
 	assert.isNumber( 'Priority Lowest', CSSCompressor.PRIORITY_LOWEST );
-
-	// Formatters
-	assert.isFunction( 'Format Addition', CSSCompressor.addFormat );
-	assert.isString( 'Format Max', CSSCompressor.FORMAT_MAX );
-	assert.isString( 'Format Med', CSSCompressor.FORMAT_MED );
-	assert.isString( 'Format Min', CSSCompressor.FORMAT_MIN );
-	assert.isString( 'Format None', CSSCompressor.FORMAT_NONE );
 });
 
 // Logging

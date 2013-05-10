@@ -120,7 +120,7 @@ jQuery(function( jQuery ) {
 
 	// Readability
 	html = "";
-	CSSCompressor.each( CSSCompressor._formats, function( format, name ) {
+	CSSCompressor.each( CSSCompressor.format, function( format, name ) {
 		var display = name[ 0 ].toUpperCase() + name.substr( 1 );
 		html += [
 			"<option value='" + name + "'>" + display + "</option>"
