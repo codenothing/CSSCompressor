@@ -28,7 +28,6 @@ munit( 'Mode', { priority: munit.PRIORITY_LOW }, function( assert ) {
 		}
 	});
 	assert.ok( 'Custom Mode Match', pass );
-	console.log( CSSCompressor.mode[ 'Custom Mode' ] );
 
 	// Overwrite Protection
 	assert.doesNotThrow( 'No Overwrite', function(){
