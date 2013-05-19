@@ -19,7 +19,6 @@ munit( 'Rule.add', { priority: munit.PRIORITY_LOWEST }, function( assert ) {
 	var rule;
 
 	// Base testing
-	console.log(CSSCompressor.rule());
 	assert.equal( 'Rule count', CSSCompressor.rule().length, fs.readdirSync( ROOT + 'lib/rules' ).length );
 
 	// Test rule type matching
