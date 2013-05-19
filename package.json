@@ -18,7 +18,7 @@
 	"dependencies": {
 		"csstree": "0.0.1",
 		"argv": "0.0.1",
-		"async": "0.2.6"
+		"async": "0.2.8"
 	},
 	"devDependencies": {
 		"nlint": "0.0.4",
