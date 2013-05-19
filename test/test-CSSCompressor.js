@@ -81,3 +81,17 @@ munit( 'CSSCompressor.log', function( assert ) {
 	compressor.log( "Just a message", position );
 	assert.deepEqual( "Message & Position Passing", compressor.log(), [ match ] );
 });
+
+
+// Static compression access
+munit( 'CSSCompressor.compress', function( assert ) {
+	var compressor = new CSSCompressor( CSSCompressor.MODE_NONE );
+
+	compressor.settings.update({ format: CSSCompressor.FORMAT_NONE });
+	compressor.compress( "#a{color:black}" );
+	assert.equal( 'No Compression', compressor.css, "#a{color:black}" );
+
+	compressor.settings.update({ "Color to Hex": true, "Shrink Hex": true });
+	compressor.compress();
+	assert.equal( 'Compression Success', compressor.css, "#a{color:#000}" );
+});

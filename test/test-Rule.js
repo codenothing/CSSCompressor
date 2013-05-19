@@ -2,13 +2,9 @@ var fs = require( 'fs' ),
 	ROOT = __dirname + '/../';
 
 
-// Wait for most tests to run since these will be adding rules
-munit( 'Rule', { priority: munit.PRIORITY_LOWEST } );
-
-
 // Add basic existance tests to ensure api stays consistent through versions
 // THESE TESTS CANNOT CHANGE (without heavy consideration)
-munit( 'Rule.static', function( assert ) {
+munit( 'Rule.static', { priority: munit.PRIORITY_HIGHEST }, function( assert ) {
 	assert.isFunction( 'Add Rule Existance', CSSCompressor.rule );
 	assert.isFunction( 'addRuleCallback Existance', CSSCompressor.addRuleCallback );
 	assert.exists( 'Rule Type Value', CSSCompressor.RULE_TYPE_VALUE );
@@ -18,11 +14,12 @@ munit( 'Rule.static', function( assert ) {
 });
 
 
-// Base rule additions
-munit( 'Rule.rule', function( assert ) {
+// Wait for most tests to run since these will be adding rules
+munit( 'Rule.add', { priority: munit.PRIORITY_LOWEST }, function( assert ) {
 	var rule;
 
 	// Base testing
+	console.log(CSSCompressor.rule());
 	assert.equal( 'Rule count', CSSCompressor.rule().length, fs.readdirSync( ROOT + 'lib/rules' ).length );
 
 	// Test rule type matching
@@ -95,7 +92,7 @@ munit( 'Rule.rule', function( assert ) {
 
 
 // Testing that new rule triggers true on all modes except none
-munit( 'Rule.addRuleCallback.default', function( assert ) {
+munit( 'Rule.addRuleCallback.default', { priority: munit.PRIORITY_LOWEST }, function( assert ) {
 	CSSCompressor.rule( "New addRuleCallback Test", CSSCompressor.RULE_TYPE_VALUE, CSSCompressor.noop );
 	CSSCompressor.each( CSSCompressor.mode, function( settings, name ) {
 		if ( name !== CSSCompressor.MODE_NONE ) {
@@ -106,7 +103,7 @@ munit( 'Rule.addRuleCallback.default', function( assert ) {
 
 
 // Tests for actual callback being triggered
-munit( 'Rule.addRuleCallback.callback', 2, function( assert ) {
+munit( 'Rule.addRuleCallback.callback', { priority: munit.PRIORITY_LOWEST, expect: 2 }, function( assert ) {
 	// For the purpose of this test, ensure that the callback stack exists
 	assert.exists( 'Callback Stack Exists', CSSCompressor._addRuleStack );
 

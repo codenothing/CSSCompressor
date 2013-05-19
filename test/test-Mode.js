@@ -1,4 +1,6 @@
-munit( 'Mode', { priority: munit.PRIORITY_LOW }, function( assert ) {
+// Same concept, make sure sub objects stay consistent through versions
+// THESE TESTS CANNOT CHANGE (without heavy consideration)
+munit( 'Mode.static', { priority: munit.PRIORITY_HIGHEST }, function( assert ) {
 	assert.isFunction( 'Mode Existance', CSSCompressor.mode );
 	assert.exists( 'Mode Type None Existance', CSSCompressor.MODE_NONE );
 	assert.exists( 'Mode Type Default Existance', CSSCompressor.MODE_DEFAULT );
@@ -6,8 +8,12 @@ munit( 'Mode', { priority: munit.PRIORITY_LOW }, function( assert ) {
 	assert.exists( 'Mode Exists None', CSSCompressor.mode[ CSSCompressor.MODE_NONE ] );
 	assert.exists( 'Mode Exists Default', CSSCompressor.mode[ CSSCompressor.MODE_DEFAULT ] );
 	assert.exists( 'Mode Exists Max', CSSCompressor.mode[ CSSCompressor.MODE_MAX ] );
-	assert.equal( 'Mode Count', Object.keys( CSSCompressor.mode ).length, 3 );
 
+	// Should only adjust as more modes are added
+	assert.equal( 'Mode Count', Object.keys( CSSCompressor.mode ).length, 3 );
+});
+
+munit( 'Mode.add', { priority: munit.PRIORITY_LOW }, function( assert ) {
 	// Custom Mode Matching
 	var pass = true, match = {
 		"Strict ID": false,

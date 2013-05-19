@@ -52,13 +52,23 @@ munit( 'Util.keysInHash', function( assert ) {
 
 // Static compression access
 munit( 'Util.compress', function( assert ) {
-	var compressor = new CSSCompressor( CSSCompressor.MODE_NONE );
+	assert.equal(
+		'Basic Compression',
+		CSSCompressor.compress( "#a{color:black}" ),
+		"#a{color:black}"
+	);
 
-	compressor.settings.update({ format: CSSCompressor.FORMAT_NONE });
-	compressor.compress( "#a{color:black}" );
-	assert.equal( 'No Compression', compressor.css, "#a{color:black}" );
+	// Mode Compression
+	assert.equal(
+		'Passing Mode',
+		CSSCompressor.compress( "#a{color:black}", CSSCompressor.MODE_MAX ),
+		"#a{color:#000}"
+	);
 
-	compressor.settings.update({ "Color to Hex": true, "Shrink Hex": true });
-	compressor.compress();
-	assert.equal( 'Compression Success', compressor.css, "#a{color:#000}" );
+	// Options
+	assert.equal(
+		'Passing Options',
+		CSSCompressor.compress( "#a{color:black}", { 'Color to Hex': true, format: CSSCompressor.FORMAT_MAX }),
+		"#a {\n\tcolor: #000000\n}"
+	);
 });

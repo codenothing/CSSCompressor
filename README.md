@@ -134,17 +134,20 @@ would be compressing color strings inside gradient values. This is the only comp
 requires a return value for change.
 
 ```js
-CSSCompressor.rule(
-	'Removing Leading Zeros on Numerics',
-	CSSCompressor.RULE_TYPE_VALUE,
-	function( value, position, compressor ) {
+CSSCompressor.rule({
+
+	name: 'Removing Leading Zeros on Numerics',
+	type: CSSCompressor.RULE_TYPE_VALUE,
+
+	callback: function( value, position, compressor ) {
 		var m = /^0+(\d+[a-z]{2})$/.exec( value );
 
 		if ( m ) {
 			return m[ 1 ];
 		}
 	}
-);
+
+});
 ```
 
 
@@ -155,15 +158,18 @@ RULE_TYPE_RULE is used for individual property/value compressions. For example, 
 'black' to it's shorter hex code alternative '#000':
 
 ```js
-CSSCompressor.rule(
-	'Special Black to Hex Converter',
-	CSSCompressor.RULE_TYPE_RULE,
-	function( rule, branch, compressor ) {
+CSSCompressor.rule({
+
+	name: 'Special Black to Hex Converter',
+	type: CSSCompressor.RULE_TYPE_RULE,
+
+	callback: function( rule, branch, compressor ) {
 		if ( rule.property == 'color' && rule.parts[ 0 ] == 'black' ) {
 			rule.parts[ 0 ] = '#000';
 		}
 	}
-);
+
+});
 ```
 
 
@@ -174,10 +180,12 @@ RULE_TYPE_BLOCK is used for rule set compressions. A full branch is passed to th
 combination style compressions. For example, removing all color properties in a div block
 
 ```js
-CSSCompressor.rule(
-	'Remove All Color Properties in Divs',
-	CSSCompressor.RULE_TYPE_BLOCK,
-	function( branch, compressor ) {
+CSSCompressor.rule({
+
+	name: 'Remove All Color Properties in Divs',
+	type: CSSCompressor.RULE_TYPE_BLOCK,
+
+	callback: function( branch, compressor ) {
 		if ( ! branch.selector || ! branch.selector.exec( /div$/i ) || ! branch.rules ) {
 			return;
 		}
@@ -191,6 +199,7 @@ CSSCompressor.rule(
 			}
 		}
 	}
+
 );
 ```
 
@@ -202,10 +211,12 @@ RULE_TYPE_SHEET is used for full stylesheet compressions. The callback is passed
 the branches array for inspection and compression. For example, to remove all comments:
 
 ```js
-CSSCompressor.rule(
-	'Remove Comments',
-	CSSCompressor.RULE_TYPE_SHEET,
-	function( branches, compressor ) {
+CSSCompressor.rule({
+
+	name: 'Remove Comments',
+	type: CSSCompressor.RULE_TYPE_SHEET,
+
+	callback: function( branches, compressor ) {
 		for ( var i = 0, branch; ++i < branches.length; i++ ) {
 			branch = branches[ i ];
 
@@ -215,6 +226,7 @@ CSSCompressor.rule(
 			}
 		}
 	}
+
 );
 ```
 
@@ -235,16 +247,19 @@ was changed, and the position object of the affected rule/branch. The last param
 objects if multiple branches/rules are affected. Taking the color example from above and adding a log line to it:
 
 ```js
-CSSCompressor.rule(
-	'Special Black to Hex Converter',
-	CSSCompressor.RULE_TYPE_RULE,
-	function( rule, branch, compressor ) {
+CSSCompressor.rule({
+
+	name: 'Special Black to Hex Converter',
+	type: CSSCompressor.RULE_TYPE_RULE,
+
+	callback: function( rule, branch, compressor ) {
 		if ( rule.property == 'color' && rule.parts[ 0 ] == 'black' ) {
 			rule.parts[ 0 ] = '#000';
 			compressor.log( "Converting black to it's hex alternative", rule.position );
 		}
 	}
-);
+
+});
 ```
 
 
@@ -258,10 +273,12 @@ the query string of the url.
 ```js
 var now = Date.now(), rurl = /^url\(.*?\)$/;
 
-CSSCompressor.rule(
-	'Resource Refresh',
-	CSSCompressor.RULE_TYPE_VALUE,
-	function( value, position, compressor ) {
+CSSCompressor.rule({
+
+	name: 'Resource Refresh',
+	type: CSSCompressor.RULE_TYPE_VALUE,
+
+	callback: function( value, position, compressor ) {
 		if ( rurl.exec( value ) ) {
 			var query = value.indexOf( '?' ) > -1 ? '&d=' + now : '&d=' + now;
 
@@ -269,7 +286,8 @@ CSSCompressor.rule(
 			return value.substr( 0, value.length - 2 ) + query + ')';
 		}
 	}
-);
+
+});
 ```
 
 

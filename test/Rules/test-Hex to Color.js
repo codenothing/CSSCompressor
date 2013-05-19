@@ -17,7 +17,7 @@ munit( 'Rule Compression.Hex to Color', function( assert ) {
 
 		{
 			name: 'No Conversion',
-			actual: 'foobar',
+			actual: '#f02de5',
 			expected: undefined
 		}
 

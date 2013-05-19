@@ -28,6 +28,12 @@ munit( 'Rule Compression.HSLA to HSL', function( assert ) {
 		},
 
 		{
+			name: 'Invalid Arguments',
+			actual: 'hsla( 214, 10%, 10% )',
+			expected: undefined
+		},
+
+		{
 			name: 'Not HSLA',
 			actual: 'hsl( 214, 10%, 10%, 1 )',
 			expected: undefined

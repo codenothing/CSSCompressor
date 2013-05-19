@@ -29,6 +29,18 @@ munit( 'Rule Compression.RGB to Hex', function( assert ) {
 			name: 'Basic Single Percentage',
 			actual: 'rgb(50%)',
 			expected: '#7f7f7f'
+		},
+
+		{
+			name: 'Not RGB',
+			actual: 'rgba( 23, 23, 23 0.5 )',
+			expected: undefined
+		},
+
+		{
+			name: 'Invalid RGB',
+			actual: 'rgb( 23, 23 )',
+			expected: undefined
 		}
 
 	]);

@@ -40,6 +40,28 @@ munit( 'Rule Compression.Strip Empty Branches', function( assert ) {
 		},
 
 		{
+			name: 'AtRule rules only Removal',
+			actual: [
+				{
+					atrule: '@media all',
+					parts: [
+						'@media',
+						'all'
+					],
+					rules: []
+				},
+				{
+					comment: '/*! some comment */'
+				}
+			],
+			expected: [
+				{
+					comment: '/*! some comment */'
+				}
+			]
+		},
+
+		{
 			name: 'Nested Full Removal',
 			actual: [
 				{
@@ -110,6 +132,34 @@ munit( 'Rule Compression.Strip Empty Branches', function( assert ) {
 							property: 'color',
 							parts: [ 'red' ]
 						}
+					]
+				},
+				{
+					comment: '/*! some comment */'
+				}
+			]
+		},
+
+		{
+			name: 'One liner ignore',
+			actual: [
+				{
+					atrule: '@import "url.css"',
+					parts: [
+						'@import',
+						'"url.css"'
+					]
+				},
+				{
+					comment: '/*! some comment */'
+				}
+			],
+			expected: [
+				{
+					atrule: '@import "url.css"',
+					parts: [
+						'@import',
+						'"url.css"'
 					]
 				},
 				{

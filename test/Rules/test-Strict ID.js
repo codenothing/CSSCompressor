@@ -90,6 +90,24 @@ munit( 'Rule Compression.Strict ID', function( assert ) {
 		},
 
 		{
+			name: 'Hash in Attribute Nothing',
+			actual: [
+				'div',
+				[
+					'p',
+					"[data-test='#hash']"
+				]
+			],
+			expected: [
+				'div',
+				[
+					'p',
+					"[data-test='#hash']"
+				]
+			]
+		},
+
+		{
 			name: 'Nothing',
 			actual: [
 				'div',

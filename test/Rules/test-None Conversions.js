@@ -38,7 +38,7 @@ munit( 'Rule Compression.None Conversions', function( assert ) {
 		},
 
 		{
-			name: 'Nothing',
+			name: 'Do Nothing',
 			actual: { property: 'color', parts: [ 'none' ], line: 0 },
 			expected: { property: 'color', parts: [ 'none' ], line: 0 }
 		}

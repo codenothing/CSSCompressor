@@ -1,10 +1,14 @@
-munit( 'Format', { priority: munit.PRIORITY_LOW }, function( assert ) {
+// Same concept, make sure sub objects stay consistent through versions
+// THESE TESTS CANNOT CHANGE (without heavy consideration)
+munit( 'Format.static', { priority: munit.PRIORITY_HIGHEST }, function( assert ) {
 	assert.isFunction( 'Format Base', CSSCompressor.format );
 	assert.isString( 'Format Max', CSSCompressor.FORMAT_MAX );
 	assert.isString( 'Format Med', CSSCompressor.FORMAT_MED );
 	assert.isString( 'Format Min', CSSCompressor.FORMAT_MIN );
 	assert.isString( 'Format None', CSSCompressor.FORMAT_NONE );
+});
 
+munit( 'Format.add', { priority: munit.PRIORITY_LOW }, function( assert ) {
 	// Protect against bad parameter
 	assert.throws( 'Callback Protection', /Format Callback not Defined/, function(){
 		CSSCompressor.format( 'No Callback Format' );

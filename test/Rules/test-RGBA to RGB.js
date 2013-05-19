@@ -26,6 +26,12 @@ munit( 'Rule Compression.RGBA to RGB', function( assert ) {
 		},
 
 		{
+			name: 'Invalid Arguments',
+			actual: 'rgba( 10%, 10%, 10% )',
+			expected: undefined
+		},
+
+		{
 			name: 'Not RGBA',
 			actual: 'rgb( 10%, 10%, 10%, 1 )',
 			expected: undefined

@@ -25,6 +25,26 @@ munit( 'Rule Compression.Lowercase Selectors', function( assert ) {
 					'.Class'
 				]
 			]
+		},
+
+		{
+			name: 'Do Nothing',
+			actual: [
+				'#ID',
+				'[DATA-ID=true]',
+				[
+					'#NESTed',
+					'[TEST=false]'
+				]
+			],
+			expected: [
+				'#ID',
+				'[DATA-ID=true]',
+				[
+					'#NESTed',
+					'[TEST=false]'
+				]
+			]
 		}
 
 	]);

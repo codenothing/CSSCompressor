@@ -1,6 +1,4 @@
-var fs = require( 'fs' ),
-	compressor = new CSSCompressor( CSSCompressor.MODE_MAX );
-
+var fs = require( 'fs' );
 
 munit( 'Format.Sheets', { priority: munit.PRIORITY_LOW }, function( assert ) {
 	fs.readdirSync( __dirname + '/' ).forEach(function( dir ) {
@@ -11,14 +9,15 @@ munit( 'Format.Sheets', { priority: munit.PRIORITY_LOW }, function( assert ) {
 		// Setup
 		var PATH = __dirname + '/' + dir + '/',
 			original = fs.readFileSync( PATH + 'original.css', 'utf8' ),
-			options = require( PATH + 'options.js' );
+			options = require( PATH + 'options.js' ),
+			compressor = new CSSCompressor( CSSCompressor.MODE_MAX );
 
 		// Assign mode
 		if ( options.mode ) {
 			compressor.settings.update( options.mode );
 		}
 
-		// Remove property sorting for now
+		// Remove sorting for easier tests
 		compressor.settings.update({ 'Sort Properties': false, 'Sort Multi Selectors': false });
 
 		// Assign extra settings

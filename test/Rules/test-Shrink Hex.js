@@ -17,6 +17,12 @@ munit( 'Rule Compression.Shrink Hex', function( assert ) {
 			name: 'No Conversion',
 			actual: '#772213',
 			expected: undefined
+		},
+
+		{
+			name: 'Invalid Hex',
+			actual: '#aa660',
+			expected: undefined
 		}
 
 	]);
