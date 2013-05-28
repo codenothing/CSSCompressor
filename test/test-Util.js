@@ -68,7 +68,7 @@ munit( 'Util.compress', function( assert ) {
 	// Options
 	assert.equal(
 		'Passing Options',
-		CSSCompressor.compress( "#a{color:black}", { 'Color to Hex': true, format: CSSCompressor.FORMAT_MAX }),
-		"#a {\n\tcolor: #000000\n}"
+		CSSCompressor.compress( "#a{color:black}", { 'Color to Hex': false, format: CSSCompressor.FORMAT_MAX }),
+		"#a {\n\tcolor: black\n}"
 	);
 });
