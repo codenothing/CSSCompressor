@@ -1,5 +1,4 @@
 // Globalize munit and Compressor objects
-global.munit = require( 'munit' );
 global.CSSCompressor = require( '../' );
 global.CSSTree = CSSCompressor.CSSTree;
 

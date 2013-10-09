@@ -1,5 +1,5 @@
 // Globalize munit and Compressor objects
-global.munit = require( 'munit' );
+var munit = global.munit = require( 'munit' );
 
 // Only stop test suite when running make test
 if ( ! process.env.NODE_TEST_NO_SKIP ) {
@@ -8,6 +8,5 @@ if ( ! process.env.NODE_TEST_NO_SKIP ) {
 
 // Render tests
 munit.render( __dirname + '/../test/', {
-	junit: __dirname + '/results/',
-	junitPrefix: process.version.replace( /\./g, '_' )
+	results: __dirname + '/results/'
 });
