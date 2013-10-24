@@ -16,7 +16,7 @@
 		"postinstall": "node build/build.js"
 	},
 	"dependencies": {
-		"csstree": "0.0.1",
+		"csstree": "0.0.3",
 		"argv": "0.0.2",
 		"async": "0.2.9"
 	},

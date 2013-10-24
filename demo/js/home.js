@@ -1,6 +1,6 @@
 /*
- * WARNING! This control file is a giant clusterfuck. Read at your own risk.
- * TODO: clean this mess up.
+ * WARNING! This control file is a giant mess. Read at your own risk.
+ * TODO: Organize this file
  */
 function prettySettingsJSON( settings ) {
 	var str = "{\n\t\"format\": \"" + settings.format + "\"";
@@ -220,7 +220,7 @@ jQuery(function( jQuery ) {
 			position = ( log.positions || [] )[ index ];
 
 		if ( position && ( position.range.end - position.range.start ) < ( input.val() || '' ).length ) {
-			input.textSelection( position.range.start, position.range.end );
+			input.textSelection( position.range.start, position.range.end + 1 );
 		}
 	});
 
