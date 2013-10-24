@@ -2,7 +2,8 @@
 	"ignore": [
 		"test/*.css",
 		".git/",
-		"node_modules/"
+		"node_modules/",
+		"dist/"
 	],
 	"linters": {
 		"jshint": {
