@@ -1,13 +1,21 @@
 {
 	"name": "csscompressor",
-	"description": "CSS Compressor to minify CSS files",
-	"repository": "https://github.com/codenothing/csscompressor",
-	"keywords": [ "css", "compressor", "file", "min", "tool" ],
-	"author": "Corey Hart <corey@codenothing.com> (http://www.codenothing.com)",
-	"homepage": "http://cssc.codenothing.com/",
-	"version": "0.0.2",
+	"version": "0.0.3pre",
 	"main": "./index.js",
 	"bin": "bin/cssc",
+	"description": "CSS Compressor to minify CSS files",
+	"keywords": [ "css", "compressor", "file", "min", "minify", "tool" ],
+	"author": "Corey Hart <corey@codenothing.com> (http://www.codenothing.com)",
+	"homepage": "http://cssc.codenothing.com/",
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/codenothing/CSSCompressor.git"
+	},
+	"bugs": {
+		"url": "https://github.com/codenothing/CSSCompressor/issues",
+		"email": "corey@codenothing.com"
+	},
 	"engines": {
 		"node": ">=0.8"
 	},
