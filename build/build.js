@@ -6,11 +6,11 @@ var fs = require( 'fs' ),
 	LIB_DIR = ROOT + 'lib/',
 	DIST_DIR = ROOT + 'dist/',
 	DEMO_DIR = ROOT + 'demo/js/',
-	BUILD_STR = fs.readFileSync( __dirname + '/headers.txt', 'utf8' ).replace( '[VERSION]', version ) + CSSTree.exportScript(),
+	BUILD_STR = CSSTree.exportScript() + "\n" + fs.readFileSync( __dirname + '/headers.txt', 'utf8' ).replace( '[VERSION]', version ),
 	stat;
 
 // Anonymous wrapper for Compressor
-BUILD_STR += "\n\n(function( global, undefined ) {\n";
+BUILD_STR += "(function( global, undefined ) {\n";
 BUILD_STR += fs.readFileSync( LIB_DIR + 'CSSCompressor.js', 'utf8' ).replace( '[VERSION]', version );
 BUILD_STR += "\n})( this );";
 

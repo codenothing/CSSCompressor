@@ -1,9 +1,10 @@
 {
 	"ignore": [
-		"test/*.css",
 		".git/",
 		"node_modules/",
-		"dist/"
+		"test/*.css",
+		"build/results/",
+		"demo/js/CSSCompressor.js"
 	],
 	"linters": {
 		"jshint": {
