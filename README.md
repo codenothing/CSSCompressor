@@ -7,7 +7,8 @@ Plugin based CSS Compressor.
 * Entirely customizable, can turn individual compressions on/off with no dependencies.
 * Custom compression support.
   
-[![Build Status](https://travis-ci.org/codenothing/CSSCompressor.png)](https://travis-ci.org/codenothing/CSSCompressor)  
+[![Build Status](https://travis-ci.org/codenothing/CSSCompressor.png)](https://travis-ci.org/codenothing/CSSCompressor)
+[![Code Climate](https://codeclimate.com/github/codenothing/CSSCompressor.png)](https://codeclimate.com/github/codenothing/CSSCompressor)
   
 ----
 ### Installation
