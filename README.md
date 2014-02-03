@@ -7,6 +7,7 @@ Plugin based CSS Compressor.
 * Entirely customizable, can turn individual compressions on/off with no dependencies.
 * Custom compression support.
   
+[![NPM version](https://badge.fury.io/js/csscompressor.png)](http://badge.fury.io/js/csscompressor)
 [![Build Status](https://travis-ci.org/codenothing/CSSCompressor.png)](https://travis-ci.org/codenothing/CSSCompressor)
 [![Code Climate](https://codeclimate.com/github/codenothing/CSSCompressor.png)](https://codeclimate.com/github/codenothing/CSSCompressor)
   
