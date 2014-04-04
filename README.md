@@ -282,7 +282,7 @@ CSSCompressor.rule({
 
 	callback: function( value, position, compressor ) {
 		if ( rurl.exec( value ) ) {
-			var query = value.indexOf( '?' ) > -1 ? '&d=' + now : '&d=' + now;
+			var query = value.indexOf( '?' ) > -1 ? '&d=' + now : '?d=' + now;
 
 			// "url(img/phone.png)" -> "url(img/phone.png?d=1366303414438)"
 			return value.substr( 0, value.length - 2 ) + query + ')';
